@@ -5,6 +5,7 @@ export enum GameType {
 
 export type Game = {
   type: GameType;
+  header: string;
   description: string;
   link: string;
 };
