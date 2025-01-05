@@ -1,4 +1,45 @@
 .page {
   width: 1200px;
   margin: auto;
+  padding: 5em;
+  border: 2px solid blue;
+  border-radius: 1em;
+
+  .header {
+    text-align: center;
+  }
+
+  .game_list {
+    display: flex;
+    flex-direction: row;
+
+    .game_list_item {
+      flex: 1;
+      border: 2px solid blue;
+      border-radius: 1em;
+      margin: 1.5em;
+      padding: 2em;
+
+      p {
+        margin: 1em 0;
+        font-size: 1.4em;
+      }
+
+      button {
+        margin: 1em 0;
+        padding: 1em;
+        border: 2px solid blue;
+        border-radius: 1em;
+        font-size: 1.2em;
+        background-color: blue;
+        color: white;
+        border: none;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(0, 191, 255);
+        }
+      }
+    }
+  }
 }
