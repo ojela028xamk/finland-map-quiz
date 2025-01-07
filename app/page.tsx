@@ -26,7 +26,7 @@ export default function Home() {
       </div>
       <div className={css.game_list}>
         {gameList.map((game) => (
-          <div className={css.game_list_item}>
+          <div key={game.type} className={css.game_list_item}>
             <h1>{game.header}</h1>
             <p>{game.description}</p>
             <Link href={game.link}>
