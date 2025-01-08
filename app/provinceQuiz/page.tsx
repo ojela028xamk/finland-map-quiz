@@ -1,12 +1,13 @@
 "use client";
-import { useEffect, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
+import { translateProvinceName } from "./translate";
 
 const ProvinceQuiz = () => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
 
     let chart = root.container.children.push(
@@ -22,6 +23,27 @@ const ProvinceQuiz = () => {
       am5map.MapPolygonSeries.new(root, {
         geoJSON: am5geodata_finlandLow,
       })
+    );
+
+    polygonSeries.mapPolygons.template.setAll({
+      // tooltipText: "{name}",
+      interactive: true,
+      fill: am5.color(0xaaaaaa),
+    });
+
+    polygonSeries.mapPolygons.template.states.create("hover", {
+      fill: am5.color("#0000FF"),
+    });
+
+    polygonSeries.mapPolygons.template.events.on(
+      "click",
+      function (event) {
+        const dataItem = event.target.dataItem?.dataContext as any;
+        if (dataItem.name) {
+          console.log(translateProvinceName(dataItem.name as string));
+        }
+      },
+      this
     );
 
     return () => {
