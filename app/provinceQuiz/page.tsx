@@ -4,7 +4,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
-import { translateProvinceName } from "./translate";
+import { translateProvinceName } from "../services/helperService";
 
 const ProvinceQuiz = () => {
   useLayoutEffect(() => {
@@ -25,12 +25,6 @@ const ProvinceQuiz = () => {
       })
     );
 
-    polygonSeries.mapPolygons.template.setAll({
-      // tooltipText: "{name}",
-      interactive: true,
-      fill: am5.color(0xaaaaaa),
-    });
-
     polygonSeries.mapPolygons.template.states.create("hover", {
       fill: am5.color("#0000FF"),
     });
@@ -38,6 +32,7 @@ const ProvinceQuiz = () => {
     polygonSeries.mapPolygons.template.events.on(
       "click",
       function (event) {
+        // TODO: Type datacontext
         const dataItem = event.target.dataItem?.dataContext as any;
         if (dataItem.name) {
           console.log(translateProvinceName(dataItem.name as string));
