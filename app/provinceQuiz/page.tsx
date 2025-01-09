@@ -6,6 +6,21 @@ import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
 import { translateProvinceName } from "../services/helperService";
 
+type DataContextProvince = {
+  CNTRY: string;
+  TYPE: string;
+  geometry: Geometry;
+  geometryType: string;
+  id: string;
+  madeFromGeoData: boolean;
+  name: string;
+};
+
+type Geometry = {
+  coordinates: Array<Array<[number[] | number]>>;
+  type: string;
+};
+
 const ProvinceQuiz = () => {
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
@@ -29,17 +44,18 @@ const ProvinceQuiz = () => {
       fill: am5.color("#0000FF"),
     });
 
-    polygonSeries.mapPolygons.template.events.on(
-      "click",
-      function (event) {
-        // TODO: Type datacontext
-        const dataItem = event.target.dataItem?.dataContext as any;
-        if (dataItem.name) {
-          console.log(translateProvinceName(dataItem.name as string));
-        }
-      },
-      this
-    );
+    polygonSeries.mapPolygons.template.events.on("click", function (event) {
+      const dataItem = event.target.dataItem;
+
+      if (dataItem) {
+        const dataContext = dataItem.dataContext as DataContextProvince;
+        const provinceName = translateProvinceName(dataContext.name);
+        console.log(provinceName);
+      } else {
+        // TODO: Error handler if data does not exist
+        console.log("error");
+      }
+    });
 
     return () => {
       root.dispose();
