@@ -4,6 +4,13 @@
   height: 100vh;
   text-align: center;
 
+  .province_quiz_display {
+    padding: 0.5em;
+    border: 2px solid blue;
+    border-radius: 2em;
+    font-size: 2em;
+  }
+
   .province_quiz_map {
     padding: 2em;
     width: 1200px;
