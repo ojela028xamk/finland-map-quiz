@@ -43,7 +43,13 @@ const initialList: ProvinceGameItem[] = Object.values(Province).map(
 const ProvinceQuiz = () => {
   const [provinceGameList, setProvinceGameList] =
     useState<ProvinceGameItem[]>(initialList);
-  const testProvince = "Lapland";
+  const [currentProvince, setCurrentProvince] =
+    useState<string>("Southwest Finland");
+
+  const handleMapAnswer = (answer: string) => {
+    const textCorrect = answer === currentProvince ? "Correct!" : "Wrong!";
+    console.log(textCorrect);
+  };
 
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
@@ -72,10 +78,9 @@ const ProvinceQuiz = () => {
 
       if (dataItem) {
         const dataContext = dataItem.dataContext as DataContextProvince;
-        const provinceName = dataContext.name;
-        const textCorrect =
-          provinceName === testProvince ? "Correct!" : "Wrong!";
-        console.log(textCorrect);
+        const clickedProvince = dataContext.name;
+        console.log("Clicked: " + clickedProvince);
+        handleMapAnswer(clickedProvince);
       } else {
         // TODO: Error handler if data does not exist
         console.log("error");
@@ -90,7 +95,9 @@ const ProvinceQuiz = () => {
   return (
     <div className={css.province_quiz}>
       <h1>Province Quiz</h1>
-      <div className={css.province_quiz_display}>Choose: {testProvince}</div>
+      <div className={css.province_quiz_display}>
+        Choose: {translateProvinceName(currentProvince)}
+      </div>
       <div className={css.province_quiz_map} id="chartdiv"></div>
     </div>
   );
