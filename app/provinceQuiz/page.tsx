@@ -33,7 +33,11 @@ const initialList: ProvinceGameItem[] = Object.values(Province).map(
     const provinceItem: ProvinceGameItem = {
       name: province,
       isAnswered: false,
-      isCorrect: null,
+      isCorrect:
+        province === Province.PIRKANMAA ||
+        province === Province.SOUTHWEST_FINLAND
+          ? true
+          : null,
     };
 
     return provinceItem;
@@ -72,6 +76,24 @@ const ProvinceQuiz = () => {
     polygonSeries.mapPolygons.template.states.create("hover", {
       fill: am5.color("#0000FF"),
     });
+
+    polygonSeries.mapPolygons.template.adapters.add(
+      "fill",
+      function (value, target) {
+        // TODO: Remove on hover functionality from adapter add()
+        const currentProvince = target.dataItem
+          ?.dataContext as DataContextProvince;
+        const findProvince = provinceGameList.find(
+          (province) => province.name === currentProvince.name
+        );
+
+        if (findProvince?.isCorrect) {
+          return am5.color(0x68dc76);
+        } else {
+          return am5.color(`${value}`);
+        }
+      }
+    );
 
     polygonSeries.mapPolygons.template.events.on("click", function (event) {
       const dataItem = event.target.dataItem;
