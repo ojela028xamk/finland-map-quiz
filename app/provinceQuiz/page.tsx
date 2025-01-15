@@ -4,7 +4,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
-import { translateProvinceName } from "../services/helperService";
+import { shuffleArray, translateProvinceName } from "../services/helperService";
 import { Province } from "../globalTypes";
 
 type DataContextProvince = {
@@ -14,7 +14,7 @@ type DataContextProvince = {
   geometryType: string;
   id: string;
   madeFromGeoData: boolean;
-  name: string;
+  name: Province;
 };
 
 type Geometry = {
@@ -22,37 +22,57 @@ type Geometry = {
   type: string;
 };
 
-type ProvinceGameItem = {
+export type ProvinceGameItem = {
   name: Province;
   isAnswered: boolean;
   isCorrect: boolean | null;
 };
 
-const initialList: ProvinceGameItem[] = Object.values(Province).map(
+const provinceList: ProvinceGameItem[] = Object.values(Province).map(
   (province) => {
     const provinceItem: ProvinceGameItem = {
       name: province,
       isAnswered: false,
-      isCorrect:
-        province === Province.PIRKANMAA ||
-        province === Province.SOUTHWEST_FINLAND
-          ? true
-          : null,
+      isCorrect: null,
     };
 
     return provinceItem;
   }
 );
 
+const initialList = shuffleArray(provinceList);
+const initialProvince = initialList[0].name;
+
 const ProvinceQuiz = () => {
   const [provinceGameList, setProvinceGameList] =
     useState<ProvinceGameItem[]>(initialList);
   const [currentProvince, setCurrentProvince] =
-    useState<string>("Southwest Finland");
+    useState<Province>(initialProvince);
+  const [currentProvinceIndex, setCurrentProvinceIndex] = useState<number>(0);
 
-  const handleMapAnswer = (answer: string) => {
-    const textCorrect = answer === currentProvince ? "Correct!" : "Wrong!";
-    console.log(textCorrect);
+  const handleMapAnswer = (answer: Province) => {
+    const newGameList = [...provinceGameList];
+    const newIndex = currentProvinceIndex + 1;
+    const correctAnswerIndex = provinceGameList.findIndex(
+      (province) => province.name === currentProvince
+    );
+
+    if (currentProvince === answer) {
+      newGameList[correctAnswerIndex] = {
+        name: currentProvince,
+        isAnswered: true,
+        isCorrect: true,
+      };
+    } else {
+      newGameList[correctAnswerIndex] = {
+        name: currentProvince,
+        isAnswered: true,
+        isCorrect: false,
+      };
+    }
+    setProvinceGameList(newGameList);
+    setCurrentProvince(provinceGameList[newIndex].name);
+    setCurrentProvinceIndex(newIndex);
   };
 
   useLayoutEffect(() => {
@@ -73,10 +93,6 @@ const ProvinceQuiz = () => {
       })
     );
 
-    polygonSeries.mapPolygons.template.states.create("hover", {
-      fill: am5.color("#0000FF"),
-    });
-
     polygonSeries.mapPolygons.template.adapters.add(
       "fill",
       function (value, target) {
@@ -89,11 +105,17 @@ const ProvinceQuiz = () => {
 
         if (findProvince?.isCorrect) {
           return am5.color(0x68dc76);
+        } else if (findProvince?.isCorrect === false) {
+          return am5.color(0xb30000);
         } else {
-          return am5.color(`${value}`);
+          return am5.color(0xd9d9d9);
         }
       }
     );
+
+    polygonSeries.mapPolygons.template.states.create("hover", {
+      fill: am5.color("#0000FF"),
+    });
 
     polygonSeries.mapPolygons.template.events.on("click", function (event) {
       const dataItem = event.target.dataItem;
@@ -112,7 +134,7 @@ const ProvinceQuiz = () => {
     return () => {
       root.dispose();
     };
-  }, []);
+  }, [provinceGameList]);
 
   return (
     <div className={css.province_quiz}>
