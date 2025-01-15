@@ -40,14 +40,15 @@ const provinceList: ProvinceGameItem[] = Object.values(Province).map(
   }
 );
 
-const initialList = shuffleArray(provinceList);
-const initialProvince = initialList[0].name;
+// const initialList = shuffleArray(provinceList);
+// const initialProvince = initialList[0].name;
 
 const ProvinceQuiz = () => {
   const [provinceGameList, setProvinceGameList] =
-    useState<ProvinceGameItem[]>(initialList);
-  const [currentProvince, setCurrentProvince] =
-    useState<Province>(initialProvince);
+    useState<ProvinceGameItem[]>(provinceList);
+  const [currentProvince, setCurrentProvince] = useState<Province>(
+    provinceList[0].name
+  );
   const [currentProvinceIndex, setCurrentProvinceIndex] = useState<number>(0);
 
   const handleMapAnswer = (answer: Province) => {
