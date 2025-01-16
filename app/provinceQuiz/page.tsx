@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
@@ -40,9 +40,6 @@ const provinceList: ProvinceGameItem[] = Object.values(Province).map(
   }
 );
 
-// const initialList = shuffleArray(provinceList);
-// const initialProvince = initialList[0].name;
-
 const ProvinceQuiz = () => {
   const [provinceGameList, setProvinceGameList] =
     useState<ProvinceGameItem[]>(provinceList);
@@ -75,6 +72,14 @@ const ProvinceQuiz = () => {
     setCurrentProvince(provinceGameList[newIndex].name);
     setCurrentProvinceIndex(newIndex);
   };
+
+  useEffect(() => {
+    const initialList = shuffleArray(provinceList);
+    const initialProvince = initialList[0].name;
+
+    setProvinceGameList(initialList);
+    setCurrentProvince(initialProvince);
+  }, []);
 
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
