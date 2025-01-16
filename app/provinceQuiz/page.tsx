@@ -47,6 +47,8 @@ const ProvinceQuiz = () => {
     provinceList[0].name
   );
   const [currentProvinceIndex, setCurrentProvinceIndex] = useState<number>(0);
+  const [correctAnswerAmount, setCorrectAnswerAmount] = useState<number>(0);
+  const totalAnswerAmount = provinceGameList.length;
 
   const handleMapAnswer = (answer: Province) => {
     const newGameList = [...provinceGameList];
@@ -61,6 +63,7 @@ const ProvinceQuiz = () => {
         isAnswered: true,
         isCorrect: true,
       };
+      setCorrectAnswerAmount(correctAnswerAmount + 1);
     } else {
       newGameList[correctAnswerIndex] = {
         name: currentProvince,
@@ -147,6 +150,10 @@ const ProvinceQuiz = () => {
       <h1>Province Quiz</h1>
       <div className={css.province_quiz_display}>
         Choose: {translateProvinceName(currentProvince)}
+        <br />
+        <span>
+          {correctAnswerAmount} / {totalAnswerAmount}
+        </span>
       </div>
       <div className={css.province_quiz_map} id="chartdiv"></div>
     </div>
