@@ -52,6 +52,18 @@ const ProvinceQuiz = () => {
 
   const handleMapAnswer = (answer: Province) => {
     const newGameList = [...provinceGameList];
+
+    if (currentProvinceIndex === 18) {
+      newGameList[currentProvinceIndex] = {
+        name: currentProvince,
+        isAnswered: true,
+        isCorrect: true,
+      };
+      setProvinceGameList(newGameList);
+      setCurrentProvince(Province.LAPLAND);
+      return;
+    }
+
     const newIndex = currentProvinceIndex + 1;
     const correctAnswerIndex = provinceGameList.findIndex(
       (province) => province.name === currentProvince
@@ -143,7 +155,7 @@ const ProvinceQuiz = () => {
     return () => {
       root.dispose();
     };
-  }, [provinceGameList]);
+  }, [currentProvince]);
 
   return (
     <div className={css.province_quiz}>
