@@ -129,14 +129,24 @@ const ProvinceQuiz = () => {
         } else if (findProvince?.isCorrect === false) {
           return am5.color(0xb30000);
         } else {
-          return am5.color(0xd9d9d9);
+          return am5.color(0x6794dc);
         }
       }
     );
 
-    polygonSeries.mapPolygons.template.states.create("hover", {
-      fill: am5.color("#0000FF"),
-    });
+    polygonSeries.mapPolygons.template.events.on(
+      "pointerover",
+      function (event) {
+        document.body.style.cursor = "pointer";
+      }
+    );
+
+    polygonSeries.mapPolygons.template.events.on(
+      "pointerout",
+      function (event) {
+        document.body.style.cursor = "default";
+      }
+    );
 
     polygonSeries.mapPolygons.template.events.on("click", function (event) {
       const dataItem = event.target.dataItem;
