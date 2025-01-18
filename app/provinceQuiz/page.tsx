@@ -48,6 +48,7 @@ const ProvinceQuiz = () => {
   );
   const [currentProvinceIndex, setCurrentProvinceIndex] = useState<number>(0);
   const [correctAnswerAmount, setCorrectAnswerAmount] = useState<number>(0);
+  const [isGameFinished, setIsGameFinished] = useState<boolean>(false);
   const totalAnswerAmount = provinceGameList.length;
 
   const handleMapAnswer = (answer: Province) => {
@@ -60,7 +61,8 @@ const ProvinceQuiz = () => {
         isCorrect: true,
       };
       setProvinceGameList(newGameList);
-      setCurrentProvince(Province.LAPLAND);
+      setCorrectAnswerAmount(correctAnswerAmount + 1);
+      setIsGameFinished(true);
       return;
     }
 
@@ -165,12 +167,16 @@ const ProvinceQuiz = () => {
     return () => {
       root.dispose();
     };
-  }, [currentProvince]);
+  }, [currentProvince, isGameFinished]);
 
   return (
     <div className={css.province_quiz}>
       <div className={css.province_quiz_display}>
-        Choose: {translateProvinceName(currentProvince)}
+        {isGameFinished ? (
+          <span>Game finished! You scored:</span>
+        ) : (
+          <span>Choose: {translateProvinceName(currentProvince)}</span>
+        )}
         <br />
         <span>
           {correctAnswerAmount} / {totalAnswerAmount}
