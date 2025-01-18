@@ -53,6 +53,11 @@ const ProvinceQuiz = () => {
 
   const handleMapAnswer = (answer: Province) => {
     const newGameList = [...provinceGameList];
+    const clickedAnswer = newGameList.find(
+      (province) => province.name === answer
+    );
+
+    if (clickedAnswer?.isAnswered) return;
 
     if (currentProvinceIndex === 18) {
       newGameList[currentProvinceIndex] = {
