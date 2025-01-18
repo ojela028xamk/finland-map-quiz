@@ -6,6 +6,7 @@ import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
 import { shuffleArray, translateProvinceName } from "../services/helperService";
 import { Province } from "../globalTypes";
+import Link from "next/link";
 
 type DataContextProvince = {
   CNTRY: string;
@@ -95,6 +96,17 @@ const ProvinceQuiz = () => {
     setCurrentProvinceIndex(newIndex);
   };
 
+  const handleResetGame = () => {
+    const initialList = shuffleArray(provinceList);
+    const initialProvince = initialList[0].name;
+
+    setProvinceGameList(initialList);
+    setCurrentProvince(initialProvince);
+    setCurrentProvinceIndex(0);
+    setCorrectAnswerAmount(0);
+    setIsGameFinished(false);
+  };
+
   useEffect(() => {
     const initialList = shuffleArray(provinceList);
     const initialProvince = initialList[0].name;
@@ -178,14 +190,22 @@ const ProvinceQuiz = () => {
     <div className={css.province_quiz}>
       <div className={css.province_quiz_display}>
         {isGameFinished ? (
-          <span>Game finished! You scored:</span>
+          <>
+            <span>
+              Game finished! You scored: {correctAnswerAmount} /{" "}
+              {totalAnswerAmount}
+            </span>
+            <br />
+            <button onClick={handleResetGame}>Play again</button>
+            <br />
+            <Link href={"/"}>
+              <button>Choose another game</button>
+            </Link>
+          </>
         ) : (
           <span>Choose: {translateProvinceName(currentProvince)}</span>
         )}
         <br />
-        <span>
-          {correctAnswerAmount} / {totalAnswerAmount}
-        </span>
       </div>
       <div className={css.province_quiz_map} id="chartdiv"></div>
     </div>
