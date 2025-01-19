@@ -1,60 +1,63 @@
+import { Province } from "../globalTypes";
+import { ProvinceGameItem } from "../provinceQuiz/page";
+
 const translateProvinceName = (name: string) => {
   switch (name) {
-    case "Lapland":
+    case Province.LAPLAND:
       return "Lappi";
 
-    case "Northern Ostrobothnia":
+    case Province.NORTHERN_OSTROBOTHNIA:
       return "Pohjois-Pohjanmaa";
 
-    case "Central Ostrobothnia":
+    case Province.CENTRAL_OSTROBOTHNIA:
       return "Keski-Pohjanmaa";
 
-    case "Southern Ostrobothnia":
+    case Province.SOUTHERN_OSTROBOTHNIA:
       return "Etelä-Pohjanmaa";
 
-    case "Ostrobothnia":
+    case Province.OSTROBOTHNIA:
       return "Pohjanmaa";
 
-    case "Kainuu":
+    case Province.KAINUU:
       return "Kainuu";
 
-    case "North Karelia":
+    case Province.NORTH_KARELIA:
       return "Pohjois-Karjala";
 
-    case "South Karelia":
+    case Province.SOUTH_KARELIA:
       return "Etelä-Karjala";
 
-    case "Northern Savonia":
+    case Province.NORTHERN_SAVONIA:
       return "Pohjois-Savo";
 
-    case "Southern Savonia":
+    case Province.SOUTHERN_SAVONIA:
       return "Etelä-Savo";
 
-    case "Central Finland":
+    case Province.CENTRAL_FINLAND:
       return "Keski-Suomi";
 
-    case "Satakunta":
+    case Province.SATAKUNTA:
       return "Satakunta";
 
-    case "Pirkanmaa":
+    case Province.PIRKANMAA:
       return "Pirkanmaa";
 
-    case "Päijänne Tavastia":
+    case Province.PÄIJÄNNE_TAVASTIA:
       return "Päijät-Häme";
 
-    case "Tavastia Proper":
+    case Province.TAVASTIA_PROPER:
       return "Kanta-Häme";
 
-    case "Southwest Finland":
+    case Province.SOUTHWEST_FINLAND:
       return "Varsinais-Suomi";
 
-    case "Uusimaa":
+    case Province.UUSIMAA:
       return "Uusimaa";
 
-    case "Kymenlaakso":
+    case Province.KYMENLAAKSO:
       return "Kymenlaakso";
 
-    case "Åland Islands":
+    case Province.ÅLAND_ISLANDS:
       return "Ahvenanmaa";
 
     default:
@@ -62,4 +65,12 @@ const translateProvinceName = (name: string) => {
   }
 };
 
-export { translateProvinceName };
+const shuffleArray = (array: ProvinceGameItem[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+export { translateProvinceName, shuffleArray };
