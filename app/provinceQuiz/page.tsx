@@ -173,7 +173,6 @@ const ProvinceQuiz = () => {
       if (dataItem) {
         const dataContext = dataItem.dataContext as DataContextProvince;
         const clickedProvince = dataContext.name;
-        console.log("Clicked: " + clickedProvince);
         handleMapAnswer(clickedProvince);
       } else {
         // TODO: Error handler if data does not exist
