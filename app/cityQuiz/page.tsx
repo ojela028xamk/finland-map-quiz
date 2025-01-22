@@ -1,10 +1,11 @@
 "use client";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./cityQuiz.module.scss";
 import { cities } from "./cityQuizData";
+import Link from "next/link";
 
 type DataContextCity = {
   geometry: Geometry;
@@ -20,6 +21,11 @@ type Geometry = {
 };
 
 const CityQuiz = () => {
+  const [currentCity, setCurrentCity] = useState<string>("Rovaniemi");
+  const [correctAnswerAmount, setCorrectAnswerAmount] = useState<number>(0);
+  const [isGameFinished, setIsGameFinished] = useState<boolean>(false);
+  const totalAnswerAmount = 20;
+
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
 
@@ -28,7 +34,7 @@ const CityQuiz = () => {
         panX: "none",
         panY: "none",
         projection: am5map.geoMercator(),
-        maxZoomLevel: 5,
+        maxZoomLevel: 1,
       })
     );
 
@@ -74,6 +80,27 @@ const CityQuiz = () => {
 
   return (
     <div className={css.city_quiz}>
+      <div className={css.city_quiz_display}>
+        {isGameFinished ? (
+          <>
+            <span>
+              Game finished! You scored: {correctAnswerAmount} /{" "}
+              {totalAnswerAmount}
+            </span>
+            <br />
+            <button onClick={() => console.log("TODO: Reset game")}>
+              Play again
+            </button>
+            <br />
+            <Link href={"/"}>
+              <button>Choose another game</button>
+            </Link>
+          </>
+        ) : (
+          <span>Choose: {currentCity}</span>
+        )}
+        <br />
+      </div>
       <div className={css.city_quiz_map} id="chartdiv"></div>
     </div>
   );
