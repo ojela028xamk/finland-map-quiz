@@ -6,6 +6,7 @@ import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./cityQuiz.module.scss";
 import { cities } from "./cityQuizData";
 import Link from "next/link";
+import { City } from "../globalTypes";
 
 type DataContextCity = {
   geometry: Geometry;
@@ -20,11 +21,28 @@ type Geometry = {
   type: string;
 };
 
+export type CityGameItem = {
+  name: City;
+  isAnswered: boolean;
+  isCorrect: boolean | null;
+};
+
+const cityList: CityGameItem[] = Object.values(City).map((city) => {
+  const cityItem: CityGameItem = {
+    name: city,
+    isAnswered: false,
+    isCorrect: null,
+  };
+
+  return cityItem;
+});
+
 const CityQuiz = () => {
-  const [currentCity, setCurrentCity] = useState<string>("Rovaniemi");
+  const [cityGameList, setCityGameList] = useState<CityGameItem[]>(cityList);
+  const [currentCity, setCurrentCity] = useState<City>(cityList[0].name);
   const [correctAnswerAmount, setCorrectAnswerAmount] = useState<number>(0);
   const [isGameFinished, setIsGameFinished] = useState<boolean>(false);
-  const totalAnswerAmount = 20;
+  const totalAnswerAmount = cityList.length;
 
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
@@ -65,6 +83,9 @@ const CityQuiz = () => {
           const dataContext = dataItem.dataContext as DataContextCity;
           const clickedCity = dataContext.name;
           console.log(clickedCity);
+        } else {
+          // TODO: Error handler if data does not exist
+          console.log("error");
         }
       });
 

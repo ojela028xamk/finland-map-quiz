@@ -1,4 +1,4 @@
-export const cities: GeoJSON.GeoJSON = {
+export const cities: GeoJSON.FeatureCollection = {
   type: "FeatureCollection",
   features: [
     {
