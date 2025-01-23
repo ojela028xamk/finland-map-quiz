@@ -4,7 +4,10 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
-import { shuffleArray, translateProvinceName } from "../services/helperService";
+import {
+  shuffleProvinceArray,
+  translateProvinceName,
+} from "../services/helperService";
 import { Province } from "../globalTypes";
 import Link from "next/link";
 
@@ -97,7 +100,7 @@ const ProvinceQuiz = () => {
   };
 
   const handleResetGame = () => {
-    const initialList = shuffleArray(provinceList);
+    const initialList = shuffleProvinceArray(provinceList);
     const initialProvince = initialList[0].name;
 
     setProvinceGameList(initialList);
@@ -108,7 +111,7 @@ const ProvinceQuiz = () => {
   };
 
   useEffect(() => {
-    const initialList = shuffleArray(provinceList);
+    const initialList = shuffleProvinceArray(provinceList);
     const initialProvince = initialList[0].name;
 
     setProvinceGameList(initialList);

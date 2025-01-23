@@ -1,3 +1,4 @@
+import { CityGameItem } from "../cityQuiz/page";
 import { Province } from "../globalTypes";
 import { ProvinceGameItem } from "../provinceQuiz/page";
 
@@ -65,7 +66,7 @@ const translateProvinceName = (name: string) => {
   }
 };
 
-const shuffleArray = (array: ProvinceGameItem[]) => {
+const shuffleProvinceArray = (array: ProvinceGameItem[]) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -73,4 +74,12 @@ const shuffleArray = (array: ProvinceGameItem[]) => {
   return array;
 };
 
-export { translateProvinceName, shuffleArray };
+const shuffleCityArray = (array: CityGameItem[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+export { translateProvinceName, shuffleProvinceArray, shuffleCityArray };
