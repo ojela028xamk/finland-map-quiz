@@ -46,8 +46,6 @@ const CityQuiz = () => {
   const [isGameFinished, setIsGameFinished] = useState<boolean>(false);
   const totalAnswerAmount = cityList.length;
 
-  console.log(correctAnswerAmount);
-
   const handleMapAnswer = (answer: City) => {
     const newGameList = [...cityGameList];
     const clickedAnswer = newGameList.find((city) => city.name === answer);
@@ -136,8 +134,8 @@ const CityQuiz = () => {
     pointSeries.bullets.push(function (root) {
       const circle = am5.Circle.new(root, {
         radius: 10,
-        fill: am5.color(0x6771dc),
-        stroke: am5.color("#ffffff"),
+        fill: am5.color("#ffffff"),
+        stroke: am5.color("#000000"),
         strokeWidth: 1,
       });
 
@@ -160,6 +158,22 @@ const CityQuiz = () => {
 
       circle.events.on("pointerout", function () {
         document.body.style.cursor = "default";
+      });
+
+      circle.adapters.add("fill", function (value, target) {
+        // TODO: Remove on hover functionality from adapter add()
+        const currentCity = target.dataItem?.dataContext as DataContextCity;
+        const findCity = cityGameList.find(
+          (city) => city.name === currentCity.name
+        );
+
+        if (findCity?.isCorrect) {
+          return am5.color(0x68dc76);
+        } else if (findCity?.isCorrect === false) {
+          return am5.color(0xb30000);
+        } else {
+          return am5.color("#ffffff");
+        }
       });
 
       return am5.Bullet.new(root, {
