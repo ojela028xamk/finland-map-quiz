@@ -1,10 +1,12 @@
+import { City } from "../globalTypes";
+
 export const cities: GeoJSON.FeatureCollection = {
   type: "FeatureCollection",
   features: [
     {
       type: "Feature",
       properties: {
-        name: "Helsinki",
+        name: City.HELSINKI,
       },
       geometry: {
         type: "Point",
@@ -14,7 +16,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Espoo",
+        name: City.ESPOO,
       },
       geometry: {
         type: "Point",
@@ -24,7 +26,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Tampere",
+        name: City.TAMPERE,
       },
       geometry: {
         type: "Point",
@@ -34,7 +36,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Vantaa",
+        name: City.VANTAA,
       },
       geometry: {
         type: "Point",
@@ -44,7 +46,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Oulu",
+        name: City.OULU,
       },
       geometry: {
         type: "Point",
@@ -54,7 +56,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Turku",
+        name: City.TURKU,
       },
       geometry: {
         type: "Point",
@@ -64,7 +66,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Jyväskylä",
+        name: City.JYVÄSKYLÄ,
       },
       geometry: {
         type: "Point",
@@ -74,7 +76,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Kuopio",
+        name: City.KUOPIO,
       },
       geometry: {
         type: "Point",
@@ -84,7 +86,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Lahti",
+        name: City.LAHTI,
       },
       geometry: {
         type: "Point",
@@ -94,7 +96,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Pori",
+        name: City.PORI,
       },
       geometry: {
         type: "Point",
@@ -104,7 +106,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Joensuu",
+        name: City.JOENSUU,
       },
       geometry: {
         type: "Point",
@@ -114,7 +116,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Kouvola",
+        name: City.KOUVOLA,
       },
       geometry: {
         type: "Point",
@@ -124,7 +126,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Lappeenranta",
+        name: City.LAPPEENRANTA,
       },
       geometry: {
         type: "Point",
@@ -134,7 +136,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Vaasa",
+        name: City.VAASA,
       },
       geometry: {
         type: "Point",
@@ -144,7 +146,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Hämeenlinna",
+        name: City.HÄMEENLINNA,
       },
       geometry: {
         type: "Point",
@@ -154,7 +156,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Seinäjoki",
+        name: City.SEINÄJOKI,
       },
       geometry: {
         type: "Point",
@@ -164,7 +166,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Rovaniemi",
+        name: City.ROVANIEMI,
       },
       geometry: {
         type: "Point",
@@ -174,7 +176,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Mikkeli",
+        name: City.MIKKELI,
       },
       geometry: {
         type: "Point",
@@ -184,7 +186,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Porvoo",
+        name: City.PORVOO,
       },
       geometry: {
         type: "Point",
@@ -194,7 +196,7 @@ export const cities: GeoJSON.FeatureCollection = {
     {
       type: "Feature",
       properties: {
-        name: "Salo",
+        name: City.SALO,
       },
       geometry: {
         type: "Point",
