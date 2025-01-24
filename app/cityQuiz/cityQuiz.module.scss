@@ -2,6 +2,18 @@
   margin: auto;
   width: 1200px;
   height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+
+  .city_quiz_display {
+    flex: 1;
+    align-self: center;
+    padding: 0.8em;
+    border: 2px solid blue;
+    border-radius: 2em;
+    font-size: 2em;
+  }
 
   .city_quiz_map {
     flex: 2;

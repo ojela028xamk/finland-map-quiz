@@ -31,3 +31,26 @@ export enum Province {
   KYMENLAAKSO = "Kymenlaakso",
   ÅLAND_ISLANDS = "Åland Islands",
 }
+
+export enum City {
+  HELSINKI = "Helsinki",
+  ESPOO = "Espoo",
+  TAMPERE = "Tampere",
+  VANTAA = "Vantaa",
+  OULU = "Oulu",
+  TURKU = "Turku",
+  JYVÄSKYLÄ = "Jyväskylä",
+  KUOPIO = "Kuopio",
+  LAHTI = "Lahti",
+  PORI = "Pori",
+  JOENSUU = "Joensuu",
+  KOUVOLA = "Kouvola",
+  LAPPEENRANTA = "Lappeenranta",
+  VAASA = "Vaasa",
+  HÄMEENLINNA = "Hämeenlinna",
+  SEINÄJOKI = "Seinäjoki",
+  ROVANIEMI = "Rovaniemi",
+  MIKKELI = "Mikkeli",
+  PORVOO = "Porvoo",
+  SALO = "Salo",
+}
