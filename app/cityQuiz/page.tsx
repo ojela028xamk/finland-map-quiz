@@ -137,7 +137,7 @@ const CityQuiz = () => {
       const circle = am5.Circle.new(root, {
         radius: 10,
         fill: am5.color(0x6771dc),
-        stroke: am5.color("#000000"),
+        stroke: am5.color("#ffffff"),
         strokeWidth: 1,
       });
 
@@ -152,6 +152,14 @@ const CityQuiz = () => {
           // TODO: Error handler if data does not exist
           console.log("error");
         }
+      });
+
+      circle.events.on("pointerover", function () {
+        document.body.style.cursor = "pointer";
+      });
+
+      circle.events.on("pointerout", function () {
+        document.body.style.cursor = "default";
       });
 
       return am5.Bullet.new(root, {
