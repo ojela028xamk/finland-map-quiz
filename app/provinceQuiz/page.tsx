@@ -170,6 +170,11 @@ const ProvinceQuiz = () => {
       }
     );
 
+    polygonSeries.mapPolygons.template.states.create("hover", {
+      stroke: am5.color("#ffffff"),
+      strokeWidth: 5,
+    });
+
     polygonSeries.mapPolygons.template.events.on("click", function (event) {
       const dataItem = event.target.dataItem;
 
