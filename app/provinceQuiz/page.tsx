@@ -147,11 +147,11 @@ const ProvinceQuiz = () => {
         );
 
         if (findProvince?.isCorrect) {
-          return am5.color(0x68dc76);
+          return am5.color("#17B890");
         } else if (findProvince?.isCorrect === false) {
-          return am5.color(0xb30000);
+          return am5.color("#e54b4b");
         } else {
-          return am5.color(0x6794dc);
+          return am5.color("#002f6c");
         }
       }
     );
@@ -196,23 +196,28 @@ const ProvinceQuiz = () => {
   return (
     <div className={css.province_quiz}>
       <div className={css.province_quiz_display}>
-        {isGameFinished ? (
-          <>
-            <span>
-              Game finished! You scored: {correctAnswerAmount} /{" "}
-              {totalAnswerAmount}
-            </span>
-            <br />
-            <button onClick={handleResetGame}>Play again</button>
-            <br />
-            <Link href={"/"}>
-              <button>Choose another game</button>
-            </Link>
-          </>
-        ) : (
-          <span>Choose: {translateProvinceName(currentProvince)}</span>
-        )}
-        <br />
+        <div className={css.display_score}>
+          {isGameFinished ? (
+            <>
+              <span>
+                Game finished! You scored: {correctAnswerAmount} /{" "}
+                {totalAnswerAmount}
+              </span>
+              <button onClick={handleResetGame}>Play again</button>
+            </>
+          ) : (
+            <>
+              <span>Choose:</span>
+              <span> {translateProvinceName(currentProvince)}</span>
+            </>
+          )}
+        </div>
+        <div className={css.display_nav}>
+          {" "}
+          <Link href={"/"}>
+            <button>Choose another game</button>
+          </Link>
+        </div>
       </div>
       <div className={css.province_quiz_map} id="chartdiv"></div>
     </div>

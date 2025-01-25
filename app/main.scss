@@ -1,0 +1,19 @@
+// Color palette
+$blue: #002f6c;
+
+@mixin button {
+  border: 2px solid white;
+  border-radius: 2em;
+  color: white;
+  background-color: $blue;
+  padding: 1em;
+  margin: 1em;
+  font-size: 0.7em;
+
+  &:hover {
+    cursor: pointer;
+    color: $blue;
+    background-color: white;
+    border: 2px solid $blue;
+  }
+}

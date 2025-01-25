@@ -1,3 +1,5 @@
+@import "../main.scss";
+
 .province_quiz {
   margin: auto;
   width: 1200px;
@@ -9,10 +11,21 @@
   .province_quiz_display {
     flex: 1;
     align-self: center;
-    padding: 0.8em;
-    border: 2px solid blue;
-    border-radius: 2em;
     font-size: 2em;
+
+    .display_score {
+      border: 2px solid $blue;
+      border-radius: 2em;
+      padding: 1em;
+
+      span {
+        display: block;
+      }
+    }
+
+    button {
+      @include button;
+    }
   }
 
   .province_quiz_map {
