@@ -5,11 +5,13 @@ import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
 import {
+  getProvinceCoatOfArms,
   shuffleProvinceArray,
   translateProvinceName,
 } from "../services/helperService";
 import { Province } from "../globalTypes";
 import Link from "next/link";
+import Image from "next/image";
 
 type DataContextProvince = {
   CNTRY: string;
@@ -207,8 +209,17 @@ const ProvinceQuiz = () => {
             </>
           ) : (
             <>
-              <span>Choose:</span>
-              <span> {translateProvinceName(currentProvince)}</span>
+              <span>Choose: </span>
+              <span>
+                {" "}
+                <Image
+                  src={getProvinceCoatOfArms(currentProvince)}
+                  alt={"Coat of arms"}
+                  width={120}
+                  height={140}
+                />{" "}
+                {translateProvinceName(currentProvince)}
+              </span>
             </>
           )}
         </div>
