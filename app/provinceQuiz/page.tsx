@@ -12,6 +12,7 @@ import {
 import { Province } from "../globalTypes";
 import Link from "next/link";
 import Image from "next/image";
+import { IoMdArrowForward } from "react-icons/io";
 
 type DataContextProvince = {
   CNTRY: string;
@@ -205,19 +206,20 @@ const ProvinceQuiz = () => {
                 Game finished! You scored: {correctAnswerAmount} /{" "}
                 {totalAnswerAmount}
               </span>
-              <button onClick={handleResetGame}>Play again</button>
+              <button onClick={handleResetGame}>Pelaa uudestaan</button>
             </>
           ) : (
             <>
-              <span>Choose: </span>
-              <span>
-                {" "}
+              <span className={css.header}>
+                Valitse kartalta <IoMdArrowForward className={css.icon} />
+              </span>
+              <span className={css.content}>
                 <Image
                   src={getProvinceCoatOfArms(currentProvince)}
                   alt={"Coat of arms"}
                   width={120}
                   height={140}
-                />{" "}
+                />
                 {translateProvinceName(currentProvince)}
               </span>
             </>
@@ -226,7 +228,7 @@ const ProvinceQuiz = () => {
         <div className={css.display_nav}>
           {" "}
           <Link href={"/"}>
-            <button>Choose another game</button>
+            <button>Valitse toinen peli</button>
           </Link>
         </div>
       </div>

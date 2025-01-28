@@ -15,11 +15,36 @@
 
     .display_score {
       border: 2px solid $blue;
-      border-radius: 2em;
-      padding: 1em;
+      border-radius: 1em;
 
       span {
         display: block;
+      }
+
+      .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5em;
+        border-radius: 0.9em 0.9em 0 0;
+        background-color: $blue;
+        color: white;
+
+        .icon {
+          font-size: 1.5em;
+        }
+      }
+
+      .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        font-size: 1.2em;
+
+        img {
+          margin: 0 0.5em;
+        }
       }
     }
 
@@ -29,7 +54,7 @@
   }
 
   .province_quiz_map {
-    flex: 2;
+    flex: 1;
     padding: 2em;
     width: 1200px;
     height: 90vh;
