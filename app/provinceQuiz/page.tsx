@@ -5,11 +5,14 @@ import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
 import {
+  getProvinceCoatOfArms,
   shuffleProvinceArray,
   translateProvinceName,
 } from "../services/helperService";
 import { Province } from "../globalTypes";
 import Link from "next/link";
+import Image from "next/image";
+import { IoMdArrowForward } from "react-icons/io";
 
 type DataContextProvince = {
   CNTRY: string;
@@ -147,11 +150,11 @@ const ProvinceQuiz = () => {
         );
 
         if (findProvince?.isCorrect) {
-          return am5.color(0x68dc76);
+          return am5.color("#379634");
         } else if (findProvince?.isCorrect === false) {
-          return am5.color(0xb30000);
+          return am5.color("#CE1235");
         } else {
-          return am5.color(0x6794dc);
+          return am5.color("#002f6c");
         }
       }
     );
@@ -169,6 +172,11 @@ const ProvinceQuiz = () => {
         document.body.style.cursor = "default";
       }
     );
+
+    polygonSeries.mapPolygons.template.states.create("hover", {
+      stroke: am5.color("#ffffff"),
+      strokeWidth: 5,
+    });
 
     polygonSeries.mapPolygons.template.events.on("click", function (event) {
       const dataItem = event.target.dataItem;
@@ -191,23 +199,39 @@ const ProvinceQuiz = () => {
   return (
     <div className={css.province_quiz}>
       <div className={css.province_quiz_display}>
-        {isGameFinished ? (
-          <>
-            <span>
-              Game finished! You scored: {correctAnswerAmount} /{" "}
-              {totalAnswerAmount}
-            </span>
-            <br />
-            <button onClick={handleResetGame}>Play again</button>
-            <br />
-            <Link href={"/"}>
-              <button>Choose another game</button>
-            </Link>
-          </>
-        ) : (
-          <span>Choose: {translateProvinceName(currentProvince)}</span>
-        )}
-        <br />
+        <div className={css.display_score}>
+          {isGameFinished ? (
+            <>
+              <span className={css.header}>Peli päättyi</span>
+              <span>
+                Pistemäärä: {correctAnswerAmount} / {totalAnswerAmount}
+              </span>
+
+              <button onClick={handleResetGame}>Pelaa uudestaan</button>
+            </>
+          ) : (
+            <>
+              <span className={css.header}>
+                Valitse kartalta <IoMdArrowForward className={css.icon} />
+              </span>
+              <span className={css.content}>
+                <Image
+                  src={getProvinceCoatOfArms(currentProvince)}
+                  alt={"Coat of arms"}
+                  width={120}
+                  height={140}
+                />
+                {translateProvinceName(currentProvince)}
+              </span>
+            </>
+          )}
+        </div>
+        <div className={css.display_nav}>
+          {" "}
+          <Link href={"/"}>
+            <button>Valitse toinen peli</button>
+          </Link>
+        </div>
       </div>
       <div className={css.province_quiz_map} id="chartdiv"></div>
     </div>
