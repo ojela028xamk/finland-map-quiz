@@ -202,10 +202,11 @@ const ProvinceQuiz = () => {
         <div className={css.display_score}>
           {isGameFinished ? (
             <>
+              <span className={css.header}>Peli päättyi</span>
               <span>
-                Game finished! You scored: {correctAnswerAmount} /{" "}
-                {totalAnswerAmount}
+                Pistemäärä: {correctAnswerAmount} / {totalAnswerAmount}
               </span>
+
               <button onClick={handleResetGame}>Pelaa uudestaan</button>
             </>
           ) : (
