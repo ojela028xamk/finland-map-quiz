@@ -150,9 +150,9 @@ const ProvinceQuiz = () => {
         );
 
         if (findProvince?.isCorrect) {
-          return am5.color("#17B890");
+          return am5.color("#379634");
         } else if (findProvince?.isCorrect === false) {
-          return am5.color("#e54b4b");
+          return am5.color("#CE1235");
         } else {
           return am5.color("#002f6c");
         }
