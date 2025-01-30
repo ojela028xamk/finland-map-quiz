@@ -7,7 +7,9 @@ import css from "./cityQuiz.module.scss";
 import { cities } from "./cityQuizData";
 import Link from "next/link";
 import { City } from "../globalTypes";
-import { shuffleCityArray } from "../services/helperService";
+import { getCityCoatOfArms, shuffleCityArray } from "../services/helperService";
+import { IoMdArrowForward } from "react-icons/io";
+import Image from "next/image";
 
 type DataContextCity = {
   geometry: Geometry;
@@ -189,23 +191,38 @@ const CityQuiz = () => {
   return (
     <div className={css.city_quiz}>
       <div className={css.city_quiz_display}>
-        {isGameFinished ? (
-          <>
-            <span>
-              Game finished! You scored: {correctAnswerAmount} /{" "}
-              {totalAnswerAmount}
-            </span>
-            <br />
-            <button onClick={handleResetGame}>Play again</button>
-            <br />
-            <Link href={"/"}>
-              <button>Choose another game</button>
-            </Link>
-          </>
-        ) : (
-          <span>Choose: {currentCity}</span>
-        )}
-        <br />
+        <div className={css.display_score}>
+          {isGameFinished ? (
+            <>
+              <span className={css.header}>Peli päättyi</span>
+              <span>
+                Pistemäärä: {correctAnswerAmount} / {totalAnswerAmount}
+              </span>
+
+              <button onClick={handleResetGame}>Pelaa uudestaan</button>
+            </>
+          ) : (
+            <>
+              <span className={css.header}>
+                Valitse kartalta <IoMdArrowForward className={css.icon} />
+              </span>
+              <span className={css.content}>
+                <Image
+                  src={getCityCoatOfArms(currentCity)}
+                  alt={"Coat of arms"}
+                  width={120}
+                  height={140}
+                />
+                {currentCity}
+              </span>
+            </>
+          )}
+        </div>
+        <div className={css.display_nav}>
+          <Link href={"/"}>
+            <button>Valitse toinen peli</button>
+          </Link>
+        </div>
       </div>
       <div className={css.city_quiz_map} id="chartdiv"></div>
     </div>
