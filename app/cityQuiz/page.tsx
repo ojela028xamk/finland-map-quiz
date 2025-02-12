@@ -141,6 +141,18 @@ const CityQuiz = () => {
         strokeWidth: 1,
       });
 
+      circle.states.create("hover", {
+        scale: 1.5,
+      });
+
+      circle.events.on("pointerover", function () {
+        document.body.style.cursor = "pointer";
+      });
+
+      circle.events.on("pointerout", function () {
+        document.body.style.cursor = "default";
+      });
+
       circle.events.on("click", function (event) {
         const dataItem = event.target.dataItem;
 
@@ -154,14 +166,6 @@ const CityQuiz = () => {
         }
       });
 
-      circle.events.on("pointerover", function () {
-        document.body.style.cursor = "pointer";
-      });
-
-      circle.events.on("pointerout", function () {
-        document.body.style.cursor = "default";
-      });
-
       circle.adapters.add("fill", function (value, target) {
         // TODO: Remove on hover functionality from adapter add()
         const currentCity = target.dataItem?.dataContext as DataContextCity;
@@ -170,9 +174,9 @@ const CityQuiz = () => {
         );
 
         if (findCity?.isCorrect) {
-          return am5.color(0x68dc76);
+          return am5.color("#379634");
         } else if (findCity?.isCorrect === false) {
-          return am5.color(0xb30000);
+          return am5.color("#CE1235");
         } else {
           return am5.color("#ffffff");
         }
