@@ -127,6 +127,10 @@ const CityQuiz = () => {
       })
     );
 
+    polygonSeries.mapPolygons.template.adapters.add("fill", function () {
+      return am5.color("#002f6c");
+    });
+
     let pointSeries = chart.series.push(
       am5map.MapPointSeries.new(root, {
         geoJSON: cities,
