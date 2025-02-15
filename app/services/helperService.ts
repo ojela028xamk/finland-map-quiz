@@ -1,5 +1,5 @@
 import { CityGameItem } from "../cityQuiz/page";
-import { Province } from "../globalTypes";
+import { City, Province } from "../globalTypes";
 import { ProvinceGameItem } from "../provinceQuiz/page";
 
 const translateProvinceName = (province: Province) => {
@@ -130,6 +130,11 @@ const getProvinceCoatOfArms = (province: Province) => {
   }
 };
 
+const getCityCoatOfArms = (city: City) => {
+  const cityName = city.toLocaleLowerCase();
+  return `/kaupungit/${cityName}.png`;
+};
+
 const shuffleProvinceArray = (array: ProvinceGameItem[]) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -149,6 +154,7 @@ const shuffleCityArray = (array: CityGameItem[]) => {
 export {
   translateProvinceName,
   getProvinceCoatOfArms,
+  getCityCoatOfArms,
   shuffleProvinceArray,
   shuffleCityArray,
 };

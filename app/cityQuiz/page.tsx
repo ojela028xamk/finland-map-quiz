@@ -7,7 +7,9 @@ import css from "./cityQuiz.module.scss";
 import { cities } from "./cityQuizData";
 import Link from "next/link";
 import { City } from "../globalTypes";
-import { shuffleCityArray } from "../services/helperService";
+import { getCityCoatOfArms, shuffleCityArray } from "../services/helperService";
+import { IoMdArrowForward } from "react-icons/io";
+import Image from "next/image";
 
 type DataContextCity = {
   geometry: Geometry;
@@ -125,6 +127,10 @@ const CityQuiz = () => {
       })
     );
 
+    polygonSeries.mapPolygons.template.adapters.add("fill", function () {
+      return am5.color("#002f6c");
+    });
+
     let pointSeries = chart.series.push(
       am5map.MapPointSeries.new(root, {
         geoJSON: cities,
@@ -137,6 +143,18 @@ const CityQuiz = () => {
         fill: am5.color("#ffffff"),
         stroke: am5.color("#000000"),
         strokeWidth: 1,
+      });
+
+      circle.states.create("hover", {
+        scale: 1.5,
+      });
+
+      circle.events.on("pointerover", function () {
+        document.body.style.cursor = "pointer";
+      });
+
+      circle.events.on("pointerout", function () {
+        document.body.style.cursor = "default";
       });
 
       circle.events.on("click", function (event) {
@@ -152,14 +170,6 @@ const CityQuiz = () => {
         }
       });
 
-      circle.events.on("pointerover", function () {
-        document.body.style.cursor = "pointer";
-      });
-
-      circle.events.on("pointerout", function () {
-        document.body.style.cursor = "default";
-      });
-
       circle.adapters.add("fill", function (value, target) {
         // TODO: Remove on hover functionality from adapter add()
         const currentCity = target.dataItem?.dataContext as DataContextCity;
@@ -168,9 +178,9 @@ const CityQuiz = () => {
         );
 
         if (findCity?.isCorrect) {
-          return am5.color(0x68dc76);
+          return am5.color("#379634");
         } else if (findCity?.isCorrect === false) {
-          return am5.color(0xb30000);
+          return am5.color("#CE1235");
         } else {
           return am5.color("#ffffff");
         }
@@ -189,23 +199,38 @@ const CityQuiz = () => {
   return (
     <div className={css.city_quiz}>
       <div className={css.city_quiz_display}>
-        {isGameFinished ? (
-          <>
-            <span>
-              Game finished! You scored: {correctAnswerAmount} /{" "}
-              {totalAnswerAmount}
-            </span>
-            <br />
-            <button onClick={handleResetGame}>Play again</button>
-            <br />
-            <Link href={"/"}>
-              <button>Choose another game</button>
-            </Link>
-          </>
-        ) : (
-          <span>Choose: {currentCity}</span>
-        )}
-        <br />
+        <div className={css.display_score}>
+          {isGameFinished ? (
+            <>
+              <span className={css.header}>Peli päättyi</span>
+              <span>
+                Pistemäärä: {correctAnswerAmount} / {totalAnswerAmount}
+              </span>
+
+              <button onClick={handleResetGame}>Pelaa uudestaan</button>
+            </>
+          ) : (
+            <>
+              <span className={css.header}>
+                Valitse kartalta <IoMdArrowForward className={css.icon} />
+              </span>
+              <span className={css.content}>
+                <Image
+                  src={getCityCoatOfArms(currentCity)}
+                  alt={"Coat of arms"}
+                  width={120}
+                  height={140}
+                />
+                {currentCity}
+              </span>
+            </>
+          )}
+        </div>
+        <div className={css.display_nav}>
+          <Link href={"/"}>
+            <button>Valitse toinen peli</button>
+          </Link>
+        </div>
       </div>
       <div className={css.city_quiz_map} id="chartdiv"></div>
     </div>
