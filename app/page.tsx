@@ -5,13 +5,13 @@ import css from "./page.module.scss";
 const gameList: Game[] = [
   {
     type: GameType.CITY,
-    header: "20 largest cities",
+    header: "20 Largest Cities",
     description: "20 largest cities based on population.",
     link: "/cityQuiz",
   },
   {
     type: GameType.PROVINCE,
-    header: "Finnish provinces",
+    header: "Finnish Provinces",
     description: "Finnish provinces.",
     link: "/provinceQuiz",
   },
@@ -27,7 +27,7 @@ export default function Home() {
       <div className={css.game_list}>
         {gameList.map((game) => (
           <div key={game.type} className={css.game_list_item}>
-            <h1>{game.header}</h1>
+            <span>{game.header}</span>
             <p>{game.description}</p>
             <Link href={game.link}>
               <button>Open game</button>
