@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export enum GameType {
   CITY = "City",
   PROVINCE = "Province",
@@ -8,6 +10,7 @@ export type Game = {
   header: string;
   description: string;
   link: string;
+  icon: ReactElement;
 };
 
 export enum Province {

@@ -5,40 +5,58 @@
   margin: auto;
   padding: 5em;
   border-radius: 1em;
+  font-family: auto;
 
   .header {
     text-align: center;
   }
 
   .game_list {
+    margin-top: 5em;
     display: flex;
     flex-direction: row;
 
     .game_list_item {
       flex: 1;
+      justify-items: center;
       border: 2px solid $blue;
       border-radius: 1em;
       margin: 1.5em;
-      text-align: center;
 
-      span {
+      .item_header {
+        position: relative;
         display: flex;
-        justify-content: center;
-        border-radius: 0.5em 0.5em 0 0;
-        font-size: 1.5em;
-        padding: 0.5em;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 1em;
+        padding: 0.5em 2em;
         background-color: $blue;
         color: white;
+        width: 70%;
+        top: -35px;
+
+        span {
+          flex: 3;
+          font-size: 2.5em;
+        }
+
+        .icon {
+          flex: 1;
+          margin-left: 0.6em;
+          font-size: 3em;
+        }
       }
 
-      p {
-        margin: 1em 0;
-        font-size: 1.4em;
-      }
+      .item_content {
+        p {
+          margin: 1em 0;
+          font-size: 1.4em;
+        }
 
-      button {
-        @include button;
-        font-size: 1.2em;
+        button {
+          @include button;
+          font-size: 1.2em;
+        }
       }
     }
   }
