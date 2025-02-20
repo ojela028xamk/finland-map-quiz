@@ -25,6 +25,8 @@ export default function Home() {
     <div className={css.page}>
       <div className={css.header}>
         <h1>Finnish Map Quiz</h1>
+      </div>
+      <div className={css.subheader}>
         <h2>Do you know finnish geography?</h2>
       </div>
       <div className={css.game_list}>
@@ -41,6 +43,9 @@ export default function Home() {
             </div>
           </div>
         ))}
+      </div>
+      <div className={css.footer}>
+        <h1>Powered by: AmCharts 5</h1>
       </div>
     </div>
   );
