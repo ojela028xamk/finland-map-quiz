@@ -6,14 +6,14 @@ import css from "./page.module.scss";
 const gameList: Game[] = [
   {
     type: GameType.CITY,
-    header: "Cities",
+    header: "Kaupungit",
     description: "20 largest cities based on population.",
     link: "/cityQuiz",
     icon: <MdLocationCity className={css.icon} />,
   },
   {
     type: GameType.PROVINCE,
-    header: "Provinces",
+    header: "Maanosat",
     description: "Finnish provinces.",
     link: "/provinceQuiz",
     icon: <MdOutlineForest className={css.icon} />,
@@ -24,10 +24,10 @@ export default function Home() {
   return (
     <div className={css.page}>
       <div className={css.header}>
-        <h1>Finnish Map Quiz</h1>
+        <h1>SUOMEN MAANTIETOVISA</h1>
       </div>
       <div className={css.subheader}>
-        <h2>Do you know finnish geography?</h2>
+        <h2>Kuinka hyvin tunnet Suomen?</h2>
       </div>
       <div className={css.game_list}>
         {gameList.map((game) => (
