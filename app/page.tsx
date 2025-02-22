@@ -7,14 +7,15 @@ const gameList: Game[] = [
   {
     type: GameType.CITY,
     header: "Kaupungit",
-    description: "20 largest cities based on population.",
+    description:
+      "Tiedätkö, mistä löytyy 20 asukasluvultaan suurinta kaupunkia?",
     link: "/cityQuiz",
     icon: <MdLocationCity className={css.icon} />,
   },
   {
     type: GameType.PROVINCE,
     header: "Maanosat",
-    description: "Finnish provinces.",
+    description: "Tiedätkö, missä on Suomen maakunnat?",
     link: "/provinceQuiz",
     icon: <MdOutlineForest className={css.icon} />,
   },
@@ -37,8 +38,10 @@ export default function Home() {
             </div>
             <div className={css.item_content}>
               <p>{game.description}</p>
+            </div>
+            <div className={css.item_button}>
               <Link href={game.link}>
-                <button>Open game</button>
+                <button>Avaa peli</button>
               </Link>
             </div>
           </div>

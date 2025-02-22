@@ -1,33 +1,28 @@
 @import "./main.scss";
 
 .page {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   text-align: center;
-  min-height: 100vh;
+  height: 100vh;
 
   .header {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+    grid-area: 1 / 1 / 2 / 6;
+    height: fit-content;
+    padding: 1em;
     background-color: $blue;
     font-size: 1.5em;
     color: white;
-
-    h1 {
-      align-self: center;
-    }
   }
 
   .subheader {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+    grid-area: 2 / 2 / 3 / 5;
+    height: fit-content;
+    padding: 1em;
+    margin: 0 5em;
     background-color: $blue;
     color: white;
-    width: 40vw;
-    align-self: center;
-    margin: 2em;
     border-radius: 1em;
     font-size: 1.5em;
 
@@ -37,19 +32,19 @@
   }
 
   .game_list {
-    width: 70vw;
-    flex: 3;
-    align-self: center;
-    margin-top: 5em;
+    grid-area: 3 / 2 / 5 / 5;
     display: flex;
     flex-direction: row;
 
     .game_list_item {
       flex: 1;
-      justify-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       border: 2px solid $blue;
       border-radius: 1em;
-      margin: 1.5em;
+      margin: 1em;
+      padding: 1em;
 
       .item_header {
         position: relative;
@@ -61,7 +56,7 @@
         background-color: $blue;
         color: white;
         width: 70%;
-        top: -35px;
+        top: -45px;
 
         span {
           flex: 3;
@@ -78,26 +73,25 @@
       .item_content {
         p {
           margin: 1em 0;
-          font-size: 1.4em;
+          font-size: 1.6em;
         }
+      }
 
+      .item_button {
         button {
           @include button;
-          font-size: 1.2em;
+          font-size: 1.3em;
         }
       }
     }
   }
 
   .footer {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+    grid-area: 6 / 1 / 7 / 6;
+    height: fit-content;
+    padding: 1em;
+    align-self: end;
     background-color: $blue;
     color: white;
-
-    h1 {
-      align-self: center;
-    }
   }
 }
