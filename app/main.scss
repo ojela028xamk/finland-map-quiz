@@ -17,3 +17,17 @@ $blue: #002f6c;
     border: 2px solid $blue;
   }
 }
+
+@mixin background_image {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  object-fit: cover;
+  overflow: hidden;
+  filter: grayscale(1);
+}

@@ -3,6 +3,7 @@ import { Game, GameType } from "./globalTypes";
 import { MdLocationCity, MdOutlineForest } from "react-icons/md";
 import css from "./page.module.scss";
 import Image from "next/image";
+import BackgroundImage from "./common/backgroundImage";
 
 const gameList: Game[] = [
   {
@@ -25,6 +26,7 @@ const gameList: Game[] = [
 export default function Home() {
   return (
     <div className={css.page}>
+      <BackgroundImage source={"/background_index.jpg"} />
       <div className={css.header}>
         <h1>SUOMEN MAANTIETOVISA</h1>
       </div>

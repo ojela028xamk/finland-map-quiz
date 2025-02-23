@@ -41,10 +41,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 2px solid $blue;
+      border: 5px solid $blue;
       border-radius: 1em;
       margin: 1em;
       padding: 1em;
+      background-color: white;
 
       .item_header {
         position: relative;
