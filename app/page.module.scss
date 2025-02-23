@@ -71,8 +71,9 @@
       }
 
       .item_content {
+        flex-grow: 1;
+
         p {
-          margin: 1em 0;
           font-size: 1.6em;
         }
       }
@@ -88,10 +89,26 @@
 
   .footer {
     grid-area: 6 / 1 / 7 / 6;
-    height: fit-content;
-    padding: 1em;
     align-self: end;
+    font-size: 0.7em;
+    padding: 1em;
     background-color: $blue;
     color: white;
+
+    .link_container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        display: inline;
+      }
+
+      .logo {
+        display: inline;
+        width: 100px;
+        height: 55px;
+      }
+    }
   }
 }

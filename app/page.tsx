@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Game, GameType } from "./globalTypes";
 import { MdLocationCity, MdOutlineForest } from "react-icons/md";
 import css from "./page.module.scss";
+import Image from "next/image";
 
 const gameList: Game[] = [
   {
@@ -48,7 +49,20 @@ export default function Home() {
         ))}
       </div>
       <div className={css.footer}>
-        <h1>Powered by: AmCharts 5</h1>
+        <Link
+          href={"https://www.amcharts.com/"}
+          target="_blank"
+          className={css.link_container}
+        >
+          <h1>Powered by: AmCharts 5</h1>
+          <Image
+            className={css.logo}
+            src={"/amcharts_logo.png"}
+            alt={"Amcharts Logo"}
+            height={373}
+            width={669}
+          />
+        </Link>
       </div>
     </div>
   );
