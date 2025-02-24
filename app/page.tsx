@@ -1,39 +1,70 @@
 import Link from "next/link";
 import { Game, GameType } from "./globalTypes";
+import { MdLocationCity, MdOutlineForest } from "react-icons/md";
 import css from "./page.module.scss";
+import Image from "next/image";
+import BackgroundImage from "./common/backgroundImage";
 
 const gameList: Game[] = [
   {
     type: GameType.CITY,
-    header: "20 largest cities",
-    description: "20 largest cities based on population.",
+    header: "Kaupungit",
+    description:
+      "Tiedätkö, mistä löytyy 20 asukasluvultaan suurinta kaupunkia?",
     link: "/cityQuiz",
+    icon: <MdLocationCity className={css.icon} />,
   },
   {
     type: GameType.PROVINCE,
-    header: "Finnish provinces",
-    description: "Finnish provinces.",
+    header: "Maanosat",
+    description: "Tiedätkö, missä on Suomen maakunnat?",
     link: "/provinceQuiz",
+    icon: <MdOutlineForest className={css.icon} />,
   },
 ];
 
 export default function Home() {
   return (
     <div className={css.page}>
+      <BackgroundImage source={"/background_index.jpg"} />
       <div className={css.header}>
-        <h1>Finnish Map Quiz</h1>
-        <h2>Do you know finnish geography?</h2>
+        <h1>SUOMEN MAANTIETOVISA</h1>
+      </div>
+      <div className={css.subheader}>
+        <h2>Kuinka hyvin tunnet Suomen?</h2>
       </div>
       <div className={css.game_list}>
         {gameList.map((game) => (
           <div key={game.type} className={css.game_list_item}>
-            <h1>{game.header}</h1>
-            <p>{game.description}</p>
-            <Link href={game.link}>
-              <button>Open game</button>
-            </Link>
+            <div className={css.item_header}>
+              <span>{game.header}</span> {game.icon}
+            </div>
+            <div className={css.item_content}>
+              <p>{game.description}</p>
+            </div>
+            <div className={css.item_button}>
+              <Link href={game.link}>
+                <button>Avaa peli</button>
+              </Link>
+            </div>
           </div>
         ))}
+      </div>
+      <div className={css.footer}>
+        <Link
+          href={"https://www.amcharts.com/"}
+          target="_blank"
+          className={css.link_container}
+        >
+          <h1>Powered by: AmCharts 5</h1>
+          <Image
+            className={css.logo}
+            src={"/amcharts_logo.png"}
+            alt={"Amcharts Logo"}
+            height={373}
+            width={669}
+          />
+        </Link>
       </div>
     </div>
   );
