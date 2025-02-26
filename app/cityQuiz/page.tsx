@@ -10,6 +10,7 @@ import { City } from "../globalTypes";
 import { getCityCoatOfArms, shuffleCityArray } from "../services/helperService";
 import { IoMdArrowForward } from "react-icons/io";
 import Image from "next/image";
+import BackgroundImage from "../common/backgroundImage";
 
 type DataContextCity = {
   geometry: Geometry;
@@ -198,6 +199,7 @@ const CityQuiz = () => {
 
   return (
     <div className={css.city_quiz}>
+      <BackgroundImage source="/background_city.png" />
       <div className={css.city_quiz_display}>
         <div className={css.display_score}>
           {isGameFinished ? (
