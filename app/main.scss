@@ -21,7 +21,7 @@ $blue: #002f6c;
 @mixin background_image {
   position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: -50px;
   min-width: 100%;
   min-height: 100%;
   width: auto;
