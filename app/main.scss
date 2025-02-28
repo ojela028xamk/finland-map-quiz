@@ -21,7 +21,7 @@ $blue: #002f6c;
 @mixin background_image {
   position: fixed;
   right: 0;
-  bottom: -50px;
+  bottom: 0;
   min-width: 100%;
   min-height: 100%;
   width: auto;
@@ -29,5 +29,5 @@ $blue: #002f6c;
   z-index: -100;
   object-fit: cover;
   overflow: hidden;
-  //filter: grayscale(1);
+  filter: grayscale(1);
 }
