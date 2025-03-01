@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "./common/header";
 
 const suomiFont = localFont({ src: "./Finlandica-Regular.woff2" });
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${suomiFont.className}`}>{children}</body>
+      <body className={`${suomiFont.className}`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
