@@ -1,6 +1,13 @@
 // Color palette
 $blue: #002f6c;
 
+@mixin header {
+  text-align: center;
+  background-color: $blue;
+  color: white;
+  z-index: 1;
+}
+
 @mixin button {
   border: 2px solid white;
   border-radius: 2em;
@@ -21,7 +28,7 @@ $blue: #002f6c;
 @mixin background_image {
   position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: -50px;
   min-width: 100%;
   min-height: 100%;
   width: auto;

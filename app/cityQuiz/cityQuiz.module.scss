@@ -2,8 +2,9 @@
 
 .city_quiz {
   margin: auto;
-  width: 1200px;
-  height: 100vh;
+  padding: 1em;
+  max-width: 1200px;
+  min-height: 90vh;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -16,6 +17,7 @@
     .display_score {
       border: 2px solid $blue;
       border-radius: 1em;
+      background-color: white;
 
       span {
         display: block;
@@ -56,8 +58,5 @@
 
   .city_quiz_map {
     flex: 1;
-    padding: 2em;
-    width: 1200px;
-    height: 90vh;
   }
 }

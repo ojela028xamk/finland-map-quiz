@@ -27,9 +27,6 @@ export default function Home() {
   return (
     <div className={css.page}>
       <BackgroundImage source={"/background_index.jpg"} />
-      <div className={css.header}>
-        <h1>SUOMEN MAANTIETOVISA</h1>
-      </div>
       <div className={css.subheader}>
         <h2>Kuinka hyvin tunnet Suomen?</h2>
       </div>
@@ -51,16 +48,29 @@ export default function Home() {
         ))}
       </div>
       <div className={css.footer}>
+        <span>Powered by: </span>
         <Link
           href={"https://www.amcharts.com/"}
           target="_blank"
           className={css.link_container}
         >
-          <h1>Powered by: AmCharts 5</h1>
           <Image
             className={css.logo}
             src={"/amcharts_logo.png"}
             alt={"Amcharts Logo"}
+            height={373}
+            width={669}
+          />
+        </Link>
+        <Link
+          href={"https://www.kuviasuomesta.fi/"}
+          target="_blank"
+          className={css.link_container}
+        >
+          <Image
+            className={css.logo}
+            src={"/kuvia_suomesta_logo.png"}
+            alt={"Kuvia Suomesta Logo"}
             height={373}
             width={669}
           />
