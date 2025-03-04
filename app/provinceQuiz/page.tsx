@@ -13,6 +13,7 @@ import { Province } from "../globalTypes";
 import Link from "next/link";
 import Image from "next/image";
 import { IoMdArrowForward } from "react-icons/io";
+import BackgroundImage from "../common/backgroundImage";
 
 type DataContextProvince = {
   CNTRY: string;
@@ -198,6 +199,7 @@ const ProvinceQuiz = () => {
 
   return (
     <div className={css.province_quiz}>
+      <BackgroundImage source="/background_province.png" />
       <div className={css.province_quiz_display}>
         <div className={css.display_score}>
           {isGameFinished ? (
