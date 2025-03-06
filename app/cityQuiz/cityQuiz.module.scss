@@ -1,4 +1,4 @@
-@import "../main.scss";
+@use "../main";
 
 .city_quiz {
   margin: auto;
@@ -15,7 +15,7 @@
     font-size: 2em;
 
     .display_score {
-      border: 2px solid $blue;
+      border: 2px solid main.$blue;
       border-radius: 1em;
       background-color: white;
 
@@ -29,7 +29,7 @@
         justify-content: center;
         align-items: center;
         border-radius: 0.9em 0.9em 0 0;
-        background-color: $blue;
+        background-color: main.$blue;
         color: white;
 
         .icon {
@@ -51,7 +51,7 @@
     }
 
     button {
-      @include button;
+      @include main.button;
     }
   }
 

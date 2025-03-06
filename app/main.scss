@@ -1,6 +1,10 @@
 // Color palette
 $blue: #002f6c;
 
+// Breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1024px;
+
 @mixin header {
   text-align: center;
   background-color: $blue;
