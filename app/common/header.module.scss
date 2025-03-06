@@ -1,13 +1,13 @@
-@import "../main.scss";
+@use "../main";
 
 .header_main {
-  @include header;
+  @include main.header;
   padding: 1em;
   font-size: 1.5em;
 }
 
 .header_page {
-  @include header;
+  @include main.header;
   padding: 0.5em;
   font-size: 1em;
 }
