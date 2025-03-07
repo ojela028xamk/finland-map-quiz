@@ -217,13 +217,14 @@ const CityQuiz = () => {
                 Valitse kartalta <IoMdArrowForward className={css.icon} />
               </span>
               <span className={css.content}>
-                <Image
-                  src={getCityCoatOfArms(currentCity)}
-                  alt={"Coat of arms"}
-                  width={120}
-                  height={140}
-                />
-                {currentCity}
+                <div className={css.img_container}>
+                  <Image
+                    src={getCityCoatOfArms(currentCity)}
+                    alt={"Coat of arms"}
+                    fill
+                  />
+                </div>
+                <span>{currentCity}</span>
               </span>
             </>
           )}
