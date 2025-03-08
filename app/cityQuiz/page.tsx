@@ -9,6 +9,7 @@ import Link from "next/link";
 import { City } from "../globalTypes";
 import { getCityCoatOfArms, shuffleCityArray } from "../services/helperService";
 import { IoMdArrowForward } from "react-icons/io";
+import { LuMouse } from "react-icons/lu";
 import Image from "next/image";
 import BackgroundImage from "../common/backgroundImage";
 
@@ -118,7 +119,7 @@ const CityQuiz = () => {
         panX: "none",
         panY: "none",
         projection: am5map.geoMercator(),
-        maxZoomLevel: 1,
+        maxZoomLevel: 2.5,
       })
     );
 
@@ -215,6 +216,10 @@ const CityQuiz = () => {
             <>
               <span className={css.header}>
                 Valitse kartalta <IoMdArrowForward className={css.icon} />
+              </span>
+              <span className={css.scroll_info}>
+                Zoomaa hiiren vierityspainikkeella{" "}
+                <LuMouse className={css.icon} />
               </span>
               <span className={css.content}>
                 <div className={css.img_container}>

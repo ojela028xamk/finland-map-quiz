@@ -31,9 +31,21 @@
         border-radius: 0.9em 0.9em 0 0;
         background-color: main.$blue;
         color: white;
+        padding-bottom: 0;
 
         .icon {
           font-size: 1.5em;
+        }
+      }
+
+      .scroll_info {
+        font-size: 0.8em;
+        background-color: main.$blue;
+        color: white;
+
+        .icon {
+          vertical-align: bottom;
+          font-size: 1.2em;
         }
       }
 
