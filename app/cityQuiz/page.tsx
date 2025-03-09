@@ -218,7 +218,7 @@ const CityQuiz = () => {
                 Valitse kartalta <IoMdArrowForward className={css.icon} />
               </span>
               <span className={css.scroll_info}>
-                Zoomaa hiiren vierityspainikkeella{" "}
+                Zoomaa hiiren vierityspainikkeella
                 <LuMouse className={css.icon} />
               </span>
               <span className={css.content}>
