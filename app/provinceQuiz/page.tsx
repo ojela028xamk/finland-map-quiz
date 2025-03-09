@@ -216,20 +216,20 @@ const ProvinceQuiz = () => {
               <span className={css.header}>
                 Valitse kartalta <IoMdArrowForward className={css.icon} />
               </span>
-              <span className={css.content}>
-                <Image
-                  src={getProvinceCoatOfArms(currentProvince)}
-                  alt={"Coat of arms"}
-                  width={120}
-                  height={140}
-                />
-                {translateProvinceName(currentProvince)}
-              </span>
+              <div className={css.content}>
+                <div className={css.img_container}>
+                  <Image
+                    src={getProvinceCoatOfArms(currentProvince)}
+                    alt={"Coat of arms"}
+                    fill
+                  />
+                </div>
+                <span>{translateProvinceName(currentProvince)}</span>
+              </div>
             </>
           )}
         </div>
         <div className={css.display_nav}>
-          {" "}
           <Link href={"/"}>
             <button>Valitse toinen peli</button>
           </Link>

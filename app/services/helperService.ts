@@ -67,67 +67,9 @@ const translateProvinceName = (province: Province) => {
 };
 
 const getProvinceCoatOfArms = (province: Province) => {
-  switch (province) {
-    case Province.LAPLAND:
-      return "/maakunnat/lappi.png";
-
-    case Province.NORTHERN_OSTROBOTHNIA:
-      return "/maakunnat/pohjois_pohjanmaa.png";
-
-    case Province.CENTRAL_OSTROBOTHNIA:
-      return "/maakunnat/keski_pohjanmaa.png";
-
-    case Province.SOUTHERN_OSTROBOTHNIA:
-      return "/maakunnat/etelä_pohjanmaa.png";
-
-    case Province.OSTROBOTHNIA:
-      return "/maakunnat/pohjanmaa.png";
-
-    case Province.KAINUU:
-      return "/maakunnat/kainuu.png";
-
-    case Province.NORTH_KARELIA:
-      return "/maakunnat/pohjois_karjala.png";
-
-    case Province.SOUTH_KARELIA:
-      return "/maakunnat/etelä_karjala.png";
-
-    case Province.NORTHERN_SAVONIA:
-      return "/maakunnat/pohjois_savo.png";
-
-    case Province.SOUTHERN_SAVONIA:
-      return "/maakunnat/etelä_savo.png";
-
-    case Province.CENTRAL_FINLAND:
-      return "/maakunnat/keski_suomi.png";
-
-    case Province.SATAKUNTA:
-      return "/maakunnat/satakunta.png";
-
-    case Province.PIRKANMAA:
-      return "/maakunnat/pirkanmaa.png";
-
-    case Province.PÄIJÄNNE_TAVASTIA:
-      return "/maakunnat/päijät_häme.png";
-
-    case Province.TAVASTIA_PROPER:
-      return "/maakunnat/kanta_häme.png";
-
-    case Province.SOUTHWEST_FINLAND:
-      return "/maakunnat/varsinais_suomi.png";
-
-    case Province.UUSIMAA:
-      return "/maakunnat/uusimaa.png";
-
-    case Province.KYMENLAAKSO:
-      return "/maakunnat/kymenlaakso.png";
-
-    case Province.ÅLAND_ISLANDS:
-      return "/maakunnat/ahvenanmaa.png";
-
-    default:
-      return "/";
-  }
+  const finnishProvince = translateProvinceName(province);
+  const provinceName = finnishProvince.replace("-", "_").toLocaleLowerCase();
+  return `/maakunnat/${provinceName}.png`;
 };
 
 const getCityCoatOfArms = (city: City) => {

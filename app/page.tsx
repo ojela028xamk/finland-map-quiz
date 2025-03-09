@@ -26,7 +26,7 @@ const gameList: Game[] = [
 export default function Home() {
   return (
     <div className={css.page}>
-      <BackgroundImage source={"/background_index.jpg"} />
+      <BackgroundImage source={"/background_index.png"} />
       <div className={css.subheader}>
         <h2>Kuinka hyvin tunnet Suomen?</h2>
       </div>
@@ -71,8 +71,8 @@ export default function Home() {
             className={css.logo}
             src={"/kuvia_suomesta_logo.png"}
             alt={"Kuvia Suomesta Logo"}
-            height={373}
-            width={669}
+            height={167}
+            width={1000}
           />
         </Link>
       </div>
