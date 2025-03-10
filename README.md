@@ -3,7 +3,8 @@
 Website: https://finland-map-quiz.vercel.app/
 
 Website that tests user's geographic knowledge on the finnish map. Maps are rendered with Amcharts 5 library.
-Images are from: https://www.kuviasuomesta.fi/
+Images are from: https://www.kuviasuomesta.fi/.
+
 Background image editing was done with Figma.
 
 ## Technologies/libraries used
