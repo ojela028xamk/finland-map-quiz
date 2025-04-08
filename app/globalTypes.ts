@@ -11,6 +11,7 @@ export type Game = {
   description: string;
   link: string;
   icon: ReactElement;
+  background_vector: string;
 };
 
 export enum Province {
