@@ -6,6 +6,7 @@ import Image from "next/image";
 import BackgroundImage from "./common/backgroundImage";
 import city_vector from "../public/city_vector.svg";
 import forest_vector from "../public/forest_vector.svg";
+import deer_vector from "../public/deer_vector.svg";
 
 const gameList: Game[] = [
   {
@@ -33,6 +34,11 @@ export default function Home() {
       <BackgroundImage source={"/background_index.png"} />
       <div className={css.subheader}>
         <h2>Kuinka hyvin tunnet Suomen?</h2>
+        <Image
+          className={css.subheader_vector}
+          src={deer_vector}
+          alt="Image of a deer"
+        />
       </div>
       <div className={css.game_list}>
         {gameList.map((game) => (
