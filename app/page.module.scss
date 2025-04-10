@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     margin: 2em auto;
+    padding: 0.5em;
     max-width: 800px;
 
     h2 {
@@ -17,7 +18,7 @@
       background-color: main.$blue;
       color: white;
       border-radius: 1em;
-      font-size: 2rem;
+      font-size: clamp(1.2rem, 5vw, 2rem);
     }
 
     h2:after {
@@ -46,7 +47,6 @@
     margin: 1em auto;
     max-width: 1000px;
     display: flex;
-    flex-direction: row;
 
     @media (max-width: main.$breakpoint-tablet) {
       flex-direction: column;
@@ -76,34 +76,21 @@
       .item_header {
         position: relative;
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        justify-content: center;
         border-radius: 1em;
-        padding: 0.5em 2em;
+        padding: 0.5em 1em;
         background-color: main.$blue;
         color: white;
-        width: 70%;
+        width: 80%;
         top: -45px;
 
         span {
-          flex: 3;
-          font-size: 2.5em;
-        }
-
-        .icon {
-          flex: 1;
-          margin-left: 0.6em;
-          width: 100px;
-          height: auto;
-        }
-
-        @media (max-width: main.$breakpoint-laptop) and (width > main.$breakpoint-tablet) {
-          span {
-            font-size: clamp(1em, 3.5vw, 2.5em);
-          }
+          font-size: clamp(1.6rem, 4.5vw, 2.5rem);
 
           .icon {
-            font-size: clamp(1.5em, 3.5vw, 3em);
+            position: relative;
+            top: 5px;
+            margin-left: 0.6em;
           }
         }
       }
@@ -113,7 +100,7 @@
         z-index: 1;
 
         p {
-          font-size: 1.6em;
+          font-size: 1.6rem;
         }
       }
 
@@ -122,7 +109,7 @@
 
         button {
           @include main.button;
-          font-size: 1.3em;
+          font-size: 1.3rem;
         }
       }
     }
@@ -138,14 +125,14 @@
     padding: 0.5em 1em;
     background-color: main.$blue;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.35rem;
 
     @media (max-width: main.$breakpoint-laptop) {
       margin: 1em;
     }
 
-    span {
-      margin-right: 0.8em;
+    @media (max-width: main.$breakpoint-mobile-large) {
+      flex-direction: column;
     }
 
     .link_container {
@@ -153,8 +140,13 @@
       align-items: center;
 
       .logo {
-        height: 55px;
+        margin: 0 0.2em;
+        height: 50px;
         width: auto;
+
+        @media (max-width: main.$breakpoint-tablet) {
+          height: 35px;
+        }
 
         &:hover {
           opacity: 0.5;

@@ -49,7 +49,10 @@ export default function Home() {
               alt={"Background image"}
             />
             <div className={css.item_header}>
-              <span>{game.header}</span> {game.icon}
+              <span>
+                {game.header}
+                {game.icon}
+              </span>
             </div>
             <div className={css.item_content}>
               <p>{game.description}</p>
