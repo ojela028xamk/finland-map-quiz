@@ -9,5 +9,5 @@
 .header_page {
   @include main.header;
   padding: 0.5em;
-  font-size: 1rem;
+  font-size: clamp(0.7rem, 2.5vw, 1rem);
 }

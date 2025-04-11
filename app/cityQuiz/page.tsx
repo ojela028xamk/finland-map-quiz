@@ -8,8 +8,7 @@ import { cities } from "./cityQuizData";
 import Link from "next/link";
 import { City } from "../globalTypes";
 import { getCityCoatOfArms, shuffleCityArray } from "../services/helperService";
-import { IoMdArrowForward } from "react-icons/io";
-import { LuMouse } from "react-icons/lu";
+import { IoMdArrowForward, IoMdArrowDown } from "react-icons/io";
 import Image from "next/image";
 import BackgroundImage from "../common/backgroundImage";
 
@@ -215,18 +214,19 @@ const CityQuiz = () => {
           ) : (
             <>
               <span className={css.header}>
-                Valitse kartalta <IoMdArrowForward className={css.icon} />
+                Valitse kartalta
+                <IoMdArrowForward className={css.arrow_forward} />
+                <IoMdArrowDown className={css.arrow_down} />
               </span>
-              <span className={css.scroll_info}>
-                Zoomaa hiiren vierityspainikkeella
-                <LuMouse className={css.icon} />
-              </span>
+              <span className={css.scroll_info}>Karttaan voi zoomata</span>
               <span className={css.content}>
-                <div className={css.img_container}>
+                <div className={css.image_container}>
                   <Image
+                    className={css.image}
                     src={getCityCoatOfArms(currentCity)}
                     alt={"Coat of arms"}
-                    fill
+                    width={100}
+                    height={100}
                   />
                 </div>
                 <span>{currentCity}</span>

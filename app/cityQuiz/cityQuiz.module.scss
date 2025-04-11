@@ -7,12 +7,18 @@
   min-height: 90vh;
   text-align: center;
   display: flex;
-  flex-direction: row;
+
+  @media (max-width: main.$breakpoint-tablet) {
+    flex-direction: column;
+  }
 
   .city_quiz_display {
     flex: 1;
-    align-self: center;
-    font-size: 2em;
+    font-size: 1.2rem;
+
+    @media (max-width: main.$breakpoint-tablet) {
+      flex: 0;
+    }
 
     .display_score {
       border: 2px solid main.$blue;
@@ -33,20 +39,25 @@
         color: white;
         padding-bottom: 0;
 
-        .icon {
-          font-size: 1.5em;
+        .arrow_down {
+          display: none;
+        }
+
+        @media (max-width: main.$breakpoint-tablet) {
+          .arrow_forward {
+            display: none;
+          }
+
+          .arrow_down {
+            display: inline;
+          }
         }
       }
 
       .scroll_info {
-        font-size: 0.8em;
+        font-size: 1rem;
         background-color: main.$blue;
         color: white;
-
-        .icon {
-          vertical-align: bottom;
-          font-size: 1.2em;
-        }
       }
 
       .content {
@@ -55,26 +66,27 @@
         align-items: center;
         padding: 1em 0;
 
-        .img_container {
-          min-height: 200px;
+        .image_container {
           flex: 1;
-          position: relative;
-          margin: 0 0.5em;
+          margin: 0 0.8em;
 
-          img {
-            object-fit: contain;
+          .image {
+            width: 100%;
+            height: auto;
           }
         }
 
         span {
-          flex: 1;
-          font-size: 1.2em;
+          flex: 2;
+          font-size: 1.2rem;
         }
       }
     }
 
-    button {
-      @include main.button;
+    .display_nav {
+      button {
+        @include main.button;
+      }
     }
   }
 
