@@ -8,7 +8,11 @@ import { cities } from "./cityQuizData";
 import Link from "next/link";
 import { City } from "../globalTypes";
 import { getCityCoatOfArms, shuffleCityArray } from "../services/helperService";
-import { IoMdArrowForward, IoMdArrowDown } from "react-icons/io";
+import {
+  IoMdArrowForward,
+  IoMdArrowDown,
+  IoMdInformationCircleOutline,
+} from "react-icons/io";
 import Image from "next/image";
 import BackgroundImage from "../common/backgroundImage";
 
@@ -118,7 +122,7 @@ const CityQuiz = () => {
         panX: "none",
         panY: "none",
         projection: am5map.geoMercator(),
-        maxZoomLevel: 2.5,
+        maxZoomLevel: 6,
       })
     );
 
@@ -204,22 +208,30 @@ const CityQuiz = () => {
         <div className={css.display_score}>
           {isGameFinished ? (
             <>
-              <span className={css.header}>Peli päättyi</span>
-              <span>
-                Pistemäärä: {correctAnswerAmount} / {totalAnswerAmount}
-              </span>
-
-              <button onClick={handleResetGame}>Pelaa uudestaan</button>
+              <div className={css.header}>
+                <span>Peli päättyi</span>
+              </div>
+              <div className={css.content}>
+                <span>
+                  Pistemäärä: {correctAnswerAmount} / {totalAnswerAmount}
+                </span>
+                <button onClick={handleResetGame}>Pelaa uudestaan</button>
+              </div>
             </>
           ) : (
             <>
-              <span className={css.header}>
-                Valitse kartalta
-                <IoMdArrowForward className={css.arrow_forward} />
-                <IoMdArrowDown className={css.arrow_down} />
-              </span>
-              <span className={css.scroll_info}>Karttaan voi zoomata</span>
-              <span className={css.content}>
+              <div className={css.header}>
+                <span>
+                  Karttaan voi zoomata
+                  <IoMdInformationCircleOutline className={css.info} />
+                </span>
+                <span>
+                  Valitse kartalta
+                  <IoMdArrowForward className={css.arrow_forward} />
+                  <IoMdArrowDown className={css.arrow_down} />
+                </span>
+              </div>
+              <div className={css.content}>
                 <div className={css.image_container}>
                   <Image
                     className={css.image}
@@ -230,7 +242,7 @@ const CityQuiz = () => {
                   />
                 </div>
                 <span>{currentCity}</span>
-              </span>
+              </div>
             </>
           )}
         </div>

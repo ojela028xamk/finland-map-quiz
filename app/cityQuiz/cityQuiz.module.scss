@@ -2,7 +2,7 @@
 
 .city_quiz {
   margin: auto;
-  padding: 1em;
+  padding: 0 1em;
   max-width: 1200px;
   min-height: 90vh;
   text-align: center;
@@ -15,6 +15,8 @@
   .city_quiz_display {
     flex: 1;
     font-size: 1.2rem;
+    display: flex;
+    flex-direction: column-reverse;
 
     @media (max-width: main.$breakpoint-tablet) {
       flex: 0;
@@ -25,19 +27,30 @@
       border-radius: 1em;
       background-color: white;
 
-      span {
-        display: block;
-        padding: 0.5em;
-      }
-
       .header {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0.9em 0.9em 0 0;
+        flex-direction: column;
         background-color: main.$blue;
         color: white;
-        padding-bottom: 0;
+        border-radius: 0.7em 0.7em 0 0;
+        padding: 0.5em;
+
+        span {
+          margin: 0.2em;
+        }
+
+        .info {
+          font-size: 1.5rem;
+          vertical-align: sub;
+          margin-left: 0.3em;
+        }
+
+        .arrow_down,
+        .arrow_forward {
+          font-size: 1.5rem;
+          vertical-align: sub;
+          margin-left: 0.3em;
+        }
 
         .arrow_down {
           display: none;
@@ -54,21 +67,18 @@
         }
       }
 
-      .scroll_info {
-        font-size: 1rem;
-        background-color: main.$blue;
-        color: white;
-      }
-
       .content {
         display: flex;
-        justify-content: center;
         align-items: center;
-        padding: 1em 0;
+        padding: 0.5em 0;
 
         .image_container {
           flex: 1;
           margin: 0 0.8em;
+
+          @media (max-width: main.$breakpoint-mobile-large) {
+            display: none;
+          }
 
           .image {
             width: 100%;
@@ -78,7 +88,11 @@
 
         span {
           flex: 2;
-          font-size: 1.2rem;
+          font-size: 1.5rem;
+        }
+
+        button {
+          @include main.button;
         }
       }
     }
