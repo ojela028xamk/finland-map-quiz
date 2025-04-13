@@ -1,0 +1,93 @@
+@use "../main.scss";
+
+.quiz_display {
+  flex: 1;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column-reverse;
+
+  @media (max-width: main.$breakpoint-tablet) {
+    flex: 0;
+  }
+
+  .display_score {
+    border: 2px solid main.$blue;
+    border-radius: 1em;
+    background-color: white;
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      background-color: main.$blue;
+      color: white;
+      border-radius: 0.7em 0.7em 0 0;
+      padding: 0.5em;
+
+      span {
+        margin: 0.2em;
+      }
+
+      .info {
+        font-size: 1.5rem;
+        vertical-align: sub;
+        margin-left: 0.3em;
+      }
+
+      .arrow_down,
+      .arrow_forward {
+        font-size: 1.5rem;
+        vertical-align: sub;
+        margin-left: 0.3em;
+      }
+
+      .arrow_down {
+        display: none;
+      }
+
+      @media (max-width: main.$breakpoint-tablet) {
+        .arrow_forward {
+          display: none;
+        }
+
+        .arrow_down {
+          display: inline;
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      padding: 0.5em 0;
+
+      .image_container {
+        flex: 1;
+        margin: 0 0.8em;
+
+        @media (max-width: main.$breakpoint-mobile-large) {
+          display: none;
+        }
+
+        .image {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      span {
+        flex: 2;
+        font-size: 1.5rem;
+      }
+
+      button {
+        @include main.button;
+      }
+    }
+  }
+
+  .display_nav {
+    button {
+      @include main.button;
+    }
+  }
+}
