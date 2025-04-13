@@ -15,6 +15,11 @@
     border-radius: 1em;
     background-color: white;
 
+    @media (min-width: (main.$breakpoint-mobile-large + 1)) and (max-width: main.$breakpoint-tablet) {
+      align-self: center;
+      width: 60%;
+    }
+
     .header {
       display: flex;
       flex-direction: column;
@@ -77,6 +82,10 @@
       span {
         flex: 2;
         font-size: 1.5rem;
+
+        @media (min-width: main.$breakpoint-mobile-large) and (max-width: main.$breakpoint-tablet) {
+          flex: 6;
+        }
       }
 
       button {

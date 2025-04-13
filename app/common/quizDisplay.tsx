@@ -60,6 +60,7 @@ const QuizDisplay = ({
                   alt={"Coat of arms"}
                   width={100}
                   height={100}
+                  quality={50}
                 />
               </div>
               <span>{currentCity}</span>
