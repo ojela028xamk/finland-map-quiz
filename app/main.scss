@@ -21,7 +21,7 @@ $breakpoint-laptop: 1024px;
   background-color: $blue;
   padding: 0.8em;
   margin: 0.5em;
-  font-size: 0.7em;
+  font-size: clamp(0.8rem, 4vw, 1.2rem);
 
   &:hover {
     cursor: pointer;

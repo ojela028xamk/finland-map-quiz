@@ -2,12 +2,15 @@
 
 .quiz_display {
   flex: 1;
-  font-size: 1.2rem;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  align-self: center;
 
   @media (max-width: main.$breakpoint-tablet) {
     flex: 0;
+    flex-direction: column-reverse;
+    align-self: auto;
   }
 
   .display_score {
@@ -74,14 +77,18 @@
         }
 
         .image {
-          width: 100%;
+          width: 70%;
           height: auto;
+
+          @media (max-width: main.$breakpoint-tablet) {
+            width: 100%;
+          }
         }
       }
 
       span {
         flex: 2;
-        font-size: 1.5rem;
+        font-size: clamp(1.5rem, 4vw, 2rem);
 
         @media (min-width: main.$breakpoint-mobile-large) and (max-width: main.$breakpoint-tablet) {
           flex: 6;
