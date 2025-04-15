@@ -5,7 +5,7 @@ import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./cityQuiz.module.scss";
 import { cities } from "./cityQuizData";
-import { City } from "../globalTypes";
+import { City, GameType } from "../globalTypes";
 import { shuffleCityArray } from "../services/helperService";
 import BackgroundImage from "../common/backgroundImage";
 import QuizDisplay from "../common/quizDisplay";
@@ -199,11 +199,12 @@ const CityQuiz = () => {
     <div className={css.city_quiz}>
       <BackgroundImage source="/background_city.png" />
       <QuizDisplay
+        gameType={GameType.CITY}
         isGameFinished={isGameFinished}
         correctAnswerAmount={correctAnswerAmount}
         totalAnswerAmount={totalAnswerAmount}
         handleResetGame={handleResetGame}
-        currentCity={currentCity}
+        currentItem={currentCity}
       />
       <div className={css.city_quiz_map} id="chartdiv"></div>
     </div>

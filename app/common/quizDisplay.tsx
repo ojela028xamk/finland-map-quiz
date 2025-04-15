@@ -3,27 +3,41 @@ import {
   IoMdArrowForward,
   IoMdInformationCircleOutline,
 } from "react-icons/io";
-import { City } from "../globalTypes";
+import { City, GameType, Province } from "../globalTypes";
 import css from "./quizDisplay.module.scss";
 import Image from "next/image";
-import { getCityCoatOfArms } from "../services/helperService";
+import {
+  getCityCoatOfArms,
+  getProvinceCoatOfArms,
+  translateProvinceName,
+} from "../services/helperService";
 import Link from "next/link";
 
 type QuizDisplayProps = {
+  gameType: GameType;
   isGameFinished: boolean;
   correctAnswerAmount: number;
   totalAnswerAmount: number;
   handleResetGame: () => void;
-  currentCity: City;
+  currentItem: City | Province;
 };
 
 const QuizDisplay = ({
+  gameType,
   isGameFinished,
   correctAnswerAmount,
   totalAnswerAmount,
   handleResetGame,
-  currentCity,
+  currentItem,
 }: QuizDisplayProps) => {
+  const handleImageSource = () => {
+    if (gameType === GameType.PROVINCE)
+      return getProvinceCoatOfArms(currentItem as Province);
+    if (gameType === GameType.CITY)
+      return getCityCoatOfArms(currentItem as City);
+    return "";
+  };
+
   return (
     <div className={css.quiz_display}>
       <div className={css.display_score}>
@@ -56,14 +70,18 @@ const QuizDisplay = ({
               <div className={css.image_container}>
                 <Image
                   className={css.image}
-                  src={getCityCoatOfArms(currentCity)}
+                  src={handleImageSource()}
                   alt={"Coat of arms"}
                   fill
                   sizes="8vw"
                   quality={50}
                 />
               </div>
-              <span>{currentCity}</span>
+              <span>
+                {gameType === GameType.PROVINCE
+                  ? translateProvinceName(currentItem as Province)
+                  : currentItem}
+              </span>
             </div>
           </>
         )}
