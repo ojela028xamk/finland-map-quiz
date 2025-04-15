@@ -2,6 +2,8 @@
 $blue: #002f6c;
 
 // Breakpoints
+$breakpoint-mobile-small: 320px;
+$breakpoint-mobile-large: 425px;
 $breakpoint-tablet: 768px;
 $breakpoint-laptop: 1024px;
 
@@ -18,8 +20,8 @@ $breakpoint-laptop: 1024px;
   color: white;
   background-color: $blue;
   padding: 0.8em;
-  margin: 1em;
-  font-size: 0.7em;
+  margin: 0.5em;
+  font-size: clamp(0.8rem, 4vw, 1.2rem);
 
   &:hover {
     cursor: pointer;
@@ -32,7 +34,7 @@ $breakpoint-laptop: 1024px;
 @mixin background_image {
   position: fixed;
   right: 0;
-  bottom: -50px;
+  bottom: 0;
   min-width: 100%;
   min-height: 100%;
   width: auto;

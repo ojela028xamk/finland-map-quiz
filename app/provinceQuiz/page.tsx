@@ -4,16 +4,10 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
-import {
-  getProvinceCoatOfArms,
-  shuffleProvinceArray,
-  translateProvinceName,
-} from "../services/helperService";
-import { Province } from "../globalTypes";
-import Link from "next/link";
-import Image from "next/image";
-import { IoMdArrowForward } from "react-icons/io";
+import { shuffleProvinceArray } from "../services/helperService";
+import { GameType, Province } from "../globalTypes";
 import BackgroundImage from "../common/backgroundImage";
+import QuizDisplay from "../common/quizDisplay";
 
 type DataContextProvince = {
   CNTRY: string;
@@ -200,41 +194,14 @@ const ProvinceQuiz = () => {
   return (
     <div className={css.province_quiz}>
       <BackgroundImage source="/background_province.png" />
-      <div className={css.province_quiz_display}>
-        <div className={css.display_score}>
-          {isGameFinished ? (
-            <>
-              <span className={css.header}>Peli päättyi</span>
-              <span>
-                Pistemäärä: {correctAnswerAmount} / {totalAnswerAmount}
-              </span>
-
-              <button onClick={handleResetGame}>Pelaa uudestaan</button>
-            </>
-          ) : (
-            <>
-              <span className={css.header}>
-                Valitse kartalta <IoMdArrowForward className={css.icon} />
-              </span>
-              <div className={css.content}>
-                <div className={css.img_container}>
-                  <Image
-                    src={getProvinceCoatOfArms(currentProvince)}
-                    alt={"Coat of arms"}
-                    fill
-                  />
-                </div>
-                <span>{translateProvinceName(currentProvince)}</span>
-              </div>
-            </>
-          )}
-        </div>
-        <div className={css.display_nav}>
-          <Link href={"/"}>
-            <button>Valitse toinen peli</button>
-          </Link>
-        </div>
-      </div>
+      <QuizDisplay
+        gameType={GameType.PROVINCE}
+        isGameFinished={isGameFinished}
+        correctAnswerAmount={correctAnswerAmount}
+        totalAnswerAmount={totalAnswerAmount}
+        handleResetGame={handleResetGame}
+        currentItem={currentProvince}
+      />
       <div className={css.province_quiz_map} id="chartdiv"></div>
     </div>
   );

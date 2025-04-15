@@ -5,13 +5,10 @@ import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./cityQuiz.module.scss";
 import { cities } from "./cityQuizData";
-import Link from "next/link";
-import { City } from "../globalTypes";
-import { getCityCoatOfArms, shuffleCityArray } from "../services/helperService";
-import { IoMdArrowForward } from "react-icons/io";
-import { LuMouse } from "react-icons/lu";
-import Image from "next/image";
+import { City, GameType } from "../globalTypes";
+import { shuffleCityArray } from "../services/helperService";
 import BackgroundImage from "../common/backgroundImage";
+import QuizDisplay from "../common/quizDisplay";
 
 type DataContextCity = {
   geometry: Geometry;
@@ -119,7 +116,7 @@ const CityQuiz = () => {
         panX: "none",
         panY: "none",
         projection: am5map.geoMercator(),
-        maxZoomLevel: 2.5,
+        maxZoomLevel: 6,
       })
     );
 
@@ -201,45 +198,14 @@ const CityQuiz = () => {
   return (
     <div className={css.city_quiz}>
       <BackgroundImage source="/background_city.png" />
-      <div className={css.city_quiz_display}>
-        <div className={css.display_score}>
-          {isGameFinished ? (
-            <>
-              <span className={css.header}>Peli päättyi</span>
-              <span>
-                Pistemäärä: {correctAnswerAmount} / {totalAnswerAmount}
-              </span>
-
-              <button onClick={handleResetGame}>Pelaa uudestaan</button>
-            </>
-          ) : (
-            <>
-              <span className={css.header}>
-                Valitse kartalta <IoMdArrowForward className={css.icon} />
-              </span>
-              <span className={css.scroll_info}>
-                Zoomaa hiiren vierityspainikkeella
-                <LuMouse className={css.icon} />
-              </span>
-              <span className={css.content}>
-                <div className={css.img_container}>
-                  <Image
-                    src={getCityCoatOfArms(currentCity)}
-                    alt={"Coat of arms"}
-                    fill
-                  />
-                </div>
-                <span>{currentCity}</span>
-              </span>
-            </>
-          )}
-        </div>
-        <div className={css.display_nav}>
-          <Link href={"/"}>
-            <button>Valitse toinen peli</button>
-          </Link>
-        </div>
-      </div>
+      <QuizDisplay
+        gameType={GameType.CITY}
+        isGameFinished={isGameFinished}
+        correctAnswerAmount={correctAnswerAmount}
+        totalAnswerAmount={totalAnswerAmount}
+        handleResetGame={handleResetGame}
+        currentItem={currentCity}
+      />
       <div className={css.city_quiz_map} id="chartdiv"></div>
     </div>
   );

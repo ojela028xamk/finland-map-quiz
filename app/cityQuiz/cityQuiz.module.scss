@@ -2,80 +2,14 @@
 
 .city_quiz {
   margin: auto;
-  padding: 1em;
+  padding: 0 1em;
   max-width: 1200px;
   min-height: 90vh;
   text-align: center;
   display: flex;
-  flex-direction: row;
 
-  .city_quiz_display {
-    flex: 1;
-    align-self: center;
-    font-size: 2em;
-
-    .display_score {
-      border: 2px solid main.$blue;
-      border-radius: 1em;
-      background-color: white;
-
-      span {
-        display: block;
-        padding: 0.5em;
-      }
-
-      .header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0.9em 0.9em 0 0;
-        background-color: main.$blue;
-        color: white;
-        padding-bottom: 0;
-
-        .icon {
-          font-size: 1.5em;
-        }
-      }
-
-      .scroll_info {
-        font-size: 0.8em;
-        background-color: main.$blue;
-        color: white;
-
-        .icon {
-          vertical-align: bottom;
-          font-size: 1.2em;
-        }
-      }
-
-      .content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1em 0;
-
-        .img_container {
-          min-height: 200px;
-          flex: 1;
-          position: relative;
-          margin: 0 0.5em;
-
-          img {
-            object-fit: contain;
-          }
-        }
-
-        span {
-          flex: 1;
-          font-size: 1.2em;
-        }
-      }
-    }
-
-    button {
-      @include main.button;
-    }
+  @media (max-width: main.$breakpoint-tablet) {
+    flex-direction: column;
   }
 
   .city_quiz_map {
