@@ -58,8 +58,8 @@ const QuizDisplay = ({
                   className={css.image}
                   src={getCityCoatOfArms(currentCity)}
                   alt={"Coat of arms"}
-                  width={100}
-                  height={100}
+                  fill
+                  sizes="8vw"
                   quality={50}
                 />
               </div>

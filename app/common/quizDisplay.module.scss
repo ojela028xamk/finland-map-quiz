@@ -69,30 +69,23 @@
       padding: 0.5em 0;
 
       .image_container {
+        position: relative;
         flex: 1;
         margin: 0 0.8em;
+        min-height: 8vw;
 
         @media (max-width: main.$breakpoint-mobile-large) {
           display: none;
         }
 
         .image {
-          width: 70%;
-          height: auto;
-
-          @media (max-width: main.$breakpoint-tablet) {
-            width: 100%;
-          }
+          object-fit: contain;
         }
       }
 
       span {
         flex: 2;
         font-size: clamp(1.5rem, 4vw, 2rem);
-
-        @media (min-width: main.$breakpoint-mobile-large) and (max-width: main.$breakpoint-tablet) {
-          flex: 6;
-        }
       }
 
       button {
