@@ -56,10 +56,12 @@ const QuizDisplay = ({
         ) : (
           <>
             <div className={css.header}>
-              <span>
-                Karttaan voi zoomata
-                <IoMdInformationCircleOutline className={css.info} />
-              </span>
+              {gameType === GameType.CITY && (
+                <span>
+                  Karttaan voi zoomata
+                  <IoMdInformationCircleOutline className={css.info} />
+                </span>
+              )}
               <span>
                 Valitse kartalta
                 <IoMdArrowForward className={css.arrow_forward} />
