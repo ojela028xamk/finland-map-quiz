@@ -34,7 +34,7 @@ $breakpoint-laptop: 1024px;
 @mixin background_image {
   position: fixed;
   right: 0;
-  bottom: -50px;
+  bottom: 0;
   min-width: 100%;
   min-height: 100%;
   width: auto;
