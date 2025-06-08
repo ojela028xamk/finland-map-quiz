@@ -4,7 +4,10 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./provinceQuiz.module.scss";
-import { shuffleProvinceArray } from "../services/helperService";
+import {
+  getProvinceCoatOfArms,
+  shuffleProvinceArray,
+} from "../services/helperService";
 import { GameType, Province } from "../globalTypes";
 import BackgroundImage from "../common/backgroundImage";
 import QuizDisplay from "../common/quizDisplay";
@@ -201,6 +204,7 @@ const ProvinceQuiz = () => {
         totalAnswerAmount={totalAnswerAmount}
         handleResetGame={handleResetGame}
         currentItem={currentProvince}
+        currentItemImageUrl={getProvinceCoatOfArms(currentProvince)}
       />
       <div className={css.province_quiz_map} id="chartdiv"></div>
     </div>

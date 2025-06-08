@@ -6,11 +6,7 @@ import {
 import { City, GameType, Province } from "../globalTypes";
 import css from "./quizDisplay.module.scss";
 import Image from "next/image";
-import {
-  getCityCoatOfArms,
-  getProvinceCoatOfArms,
-  translateProvinceName,
-} from "../services/helperService";
+import { translateProvinceName } from "../services/helperService";
 import Link from "next/link";
 
 type QuizDisplayProps = {
@@ -20,6 +16,7 @@ type QuizDisplayProps = {
   totalAnswerAmount: number;
   handleResetGame: () => void;
   currentItem: City | Province;
+  currentItemImageUrl: string;
 };
 
 const QuizDisplay = ({
@@ -29,15 +26,8 @@ const QuizDisplay = ({
   totalAnswerAmount,
   handleResetGame,
   currentItem,
+  currentItemImageUrl,
 }: QuizDisplayProps) => {
-  const handleImageSource = () => {
-    if (gameType === GameType.PROVINCE)
-      return getProvinceCoatOfArms(currentItem as Province);
-    if (gameType === GameType.CITY)
-      return getCityCoatOfArms(currentItem as City);
-    return "";
-  };
-
   return (
     <div className={css.quiz_display}>
       <div className={css.display_score}>
@@ -72,7 +62,7 @@ const QuizDisplay = ({
               <div className={css.image_container}>
                 <Image
                   className={css.image}
-                  src={handleImageSource()}
+                  src={currentItemImageUrl}
                   alt={"Coat of arms"}
                   fill
                   sizes="8vw"

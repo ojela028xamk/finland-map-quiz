@@ -6,7 +6,7 @@ import am5geodata_finlandLow from "@amcharts/amcharts5-geodata/finlandLow";
 import css from "./cityQuiz.module.scss";
 import { cities } from "./cityQuizData";
 import { City, GameType } from "../globalTypes";
-import { shuffleCityArray } from "../services/helperService";
+import { getCityCoatOfArms, shuffleCityArray } from "../services/helperService";
 import BackgroundImage from "../common/backgroundImage";
 import QuizDisplay from "../common/quizDisplay";
 
@@ -205,6 +205,7 @@ const CityQuiz = () => {
         totalAnswerAmount={totalAnswerAmount}
         handleResetGame={handleResetGame}
         currentItem={currentCity}
+        currentItemImageUrl={getCityCoatOfArms(currentCity)}
       />
       <div className={css.city_quiz_map} id="chartdiv"></div>
     </div>
