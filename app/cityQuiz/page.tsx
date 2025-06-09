@@ -46,6 +46,7 @@ const CityQuiz = () => {
   const [correctAnswerAmount, setCorrectAnswerAmount] = useState<number>(0);
   const [isGameFinished, setIsGameFinished] = useState<boolean>(false);
   const totalAnswerAmount = cityList.length;
+  const currentCityImageUrl = getCityCoatOfArms(currentCity);
 
   const handleMapAnswer = (answer: City) => {
     const newGameList = [...cityGameList];
@@ -205,7 +206,7 @@ const CityQuiz = () => {
         totalAnswerAmount={totalAnswerAmount}
         handleResetGame={handleResetGame}
         currentItem={currentCity}
-        currentItemImageUrl={getCityCoatOfArms(currentCity)}
+        currentItemImageUrl={currentCityImageUrl}
       />
       <div className={css.city_quiz_map} id="chartdiv"></div>
     </div>

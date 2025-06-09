@@ -55,6 +55,7 @@ const ProvinceQuiz = () => {
   const [correctAnswerAmount, setCorrectAnswerAmount] = useState<number>(0);
   const [isGameFinished, setIsGameFinished] = useState<boolean>(false);
   const totalAnswerAmount = provinceGameList.length;
+  const currentProvinceImageUrl = getProvinceCoatOfArms(currentProvince);
 
   const handleMapAnswer = (answer: Province) => {
     const newGameList = [...provinceGameList];
@@ -204,7 +205,7 @@ const ProvinceQuiz = () => {
         totalAnswerAmount={totalAnswerAmount}
         handleResetGame={handleResetGame}
         currentItem={currentProvince}
-        currentItemImageUrl={getProvinceCoatOfArms(currentProvince)}
+        currentItemImageUrl={currentProvinceImageUrl}
       />
       <div className={css.province_quiz_map} id="chartdiv"></div>
     </div>
