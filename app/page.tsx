@@ -38,6 +38,8 @@ export default function Home() {
           className={css.subheader_vector}
           src={deer_vector}
           alt="Image of a deer"
+          priority
+          quality={50}
         />
       </div>
       <div className={css.game_list}>
@@ -47,6 +49,8 @@ export default function Home() {
               className={css.item_image}
               src={game.background_vector}
               alt={"Background image"}
+              priority
+              quality={50}
             />
             <div className={css.item_header}>
               <span>
@@ -78,6 +82,8 @@ export default function Home() {
             alt={"Amcharts Logo"}
             height={373}
             width={669}
+            priority
+            quality={50}
           />
         </Link>
         <Link
@@ -91,6 +97,8 @@ export default function Home() {
             alt={"Kuvia Suomesta Logo"}
             height={167}
             width={1000}
+            priority
+            quality={50}
           />
         </Link>
       </div>

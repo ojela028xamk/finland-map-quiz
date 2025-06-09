@@ -66,6 +66,7 @@ const QuizDisplay = ({
                   alt={"Coat of arms"}
                   fill
                   sizes="8vw"
+                  quality={50}
                 />
               </div>
               <span>
